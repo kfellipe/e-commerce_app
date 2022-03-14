@@ -1,9 +1,10 @@
 <?php 
+$root = $_SERVER['DOCUMENT_ROOT'];
 session_start();
 if(isset($_SESSION['logado'])){
     $_SESSION['logado'] = false;
 }
-include_once "../pages/partials/head.html";
+include_once "$root/Viewer/pages/partials/head.html";
 ?>
 <link rel="stylesheet" href="/Viewer/css/login.css">
 </head>

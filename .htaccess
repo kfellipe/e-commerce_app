@@ -6,13 +6,15 @@ RewriteRule ^([a-z,A-Z,0-9,_-])$ index.php
 
 Options All -Indexes
 
-RewriteRule ^(meus-anuncios)/?$ /Viewer/pages/product/products.php [NC]
-RewriteRule ^(atualizar)/([a-z,A-Z,0-9]+)/?$ /Viewer/pages/update.php?nome=$2 [NC]
-RewriteRule ^(perfil)/([a-z,A-Z,0-9]+)/?$ /Viewer/pages/perfil.php?nome=$2 [NC]
-RewriteRule ^(deletar)/([a-z,A-Z,0-9]+)/?$ /Viewer/pages/delete.php?nome=$2 [NC]
+RewriteRule ^/?(meus-anuncios)/?$ /Viewer/pages/productsPages/products.php [NC]
+RewriteRule ^/?(atualizar-usuario)/([a-z,A-Z,0-9]+)/?$ /Viewer/pages/usersPages/update.php?nome=$2 [NC]
+RewriteRule ^/?(perfil)/([a-z,A-Z,0-9]+)/?$ /Viewer/pages/usersPages/perfil.php?nome=$2 [NC]
+RewriteRule ^/?(deletar-usuario)/([a-z,A-Z,0-9]+)/?$ /Viewer/pages/usersPages/delete.php?nome=$2 [NC]
+RewriteRule ^/?(registrar-usuario)/?$ /Viewer/pages/usersPages/registrar.php [NC]
+RewriteRule ^/?(login)/?$ /Viewer/pages/usersPages/login.php [NC]
+
+RewriteRule ^/?(cadastrar-produto)/?$ /Viewer/pages/productsPages/create.php [NC]
 RewriteRule ^/?(teste)/?$ /Viewer/pages/teste.php [NC]
-RewriteRule ^/?(registrar)/?$ /Viewer/pages/registrar.php [NC]
 RewriteRule ^/?(home)/?$ /Viewer/pages/home.php [NC]
-RewriteRule ^/?(login)/?$ /Viewer/pages/login.php [NC]
 ErrorDocument 403 /Viewer/pages/errors/403.php
 ErrorDocument 404 /Viewer/pages/errors/404.php

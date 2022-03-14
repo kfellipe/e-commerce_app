@@ -1,12 +1,9 @@
 <?php
 
-include_once "../../Model/CRUD.php";
-$user = "root";
-
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,7 +12,10 @@ $user = "root";
 </head>
 <body>
     <?php 
-    $nome;
-    echo $nome1 = $nome ?? "Teste" ?>
+    
+    $db = new teste();
+    $db->select()from()->query();
+
+    ?>
 </body>
 </html>

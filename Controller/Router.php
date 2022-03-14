@@ -12,30 +12,42 @@ $caracteres_sem_acento = array(
 );
 
 if (isset($_POST['login'])){
+    $_SESSION['site'] = "Fazer LogIn";
     header("Location: ../login");
 } elseif (isset($_POST['home'])){
+    $_SESSION['site'] = "Home";
     header("Location: ../home");
 } elseif (isset($_POST['register'])){
-    header("Location: ../registrar");
+    $_SESSION['site'] = "Fazer Cadastro";
+    header("Location: ../registrar-usuario");
 } elseif (isset($_POST['sub-register'])){
-    include_once "registrarController.php";
+    include_once "usersController/registrarController.php";
 } elseif (isset($_POST['delete'])){
+    $_SESSION['site'] = "Deletar usuário";
     $username = strtr($_SESSION['logado'], $caracteres_sem_acento);
-    header("Location: ../deletar/$username");
+    header("Location: ../deletar-usuario/$username");
 } elseif (isset($_POST['sub-delete'])){
-    include_once "deleteController.php";
+    include_once "usersController/deleteController.php";
 } elseif (isset($_POST['sub-update'])){
-    include_once "updateController.php";
+    include_once "usersController/updateController.php";
 } elseif (isset($_POST['update'])){
+    $_SESSION['site'] = "Atualizar dados";
     $username = strtr($_SESSION['logado'], $caracteres_sem_acento);
-    header("Location: ../atualizar/$username");
+    header("Location: ../atualizar-usuario/$username");
 } elseif (isset($_POST['perfil'])){
+    $_SESSION['site'] = "Perfil do usuário";
     $username = strtr($_SESSION['logado'], $caracteres_sem_acento);
     header("Location: ../perfil/$username");
 } elseif (isset($_POST['logout'])){
-    include_once "loginController.php";
+    include_once "usersController/loginController.php";
 } elseif (isset($_POST['logar'])){
-    include_once "loginController.php";
+    include_once "usersController/loginController.php";
 } elseif (isset($_POST['product'])){
+    $_SESSION['site'] = "Meus anuncios";
     header("Location: ../meus-anuncios");
+} elseif (isset($_POST['create-product'])){
+    $_SESSION['site'] = "Cadastrar produto";
+    header("Location: ../cadastrar-produto");
+} elseif (isset($_POST['sub-create-product'])){
+    include_once "productsController/postController.php";
 }

@@ -14,10 +14,13 @@ include_once "../../Viewer/pages/partials/head.html";
     if(isset($_SESSION['message'])){
             $message = $_SESSION['message'];
             echo "<div class='popup'>$message</div>";
-            session_unset();
-            session_destroy();
+            unset($_SESSION['message']);
         }
     ?>
-
+    <main>
+        <section class="container-products">
+            
+        </section>
+    </main>
 </body>
 </html>
