@@ -1,0 +1,56 @@
+@charset "UTF-8";
+
+@keyframes startLogo{
+    from {
+        opacity: 0%;
+    }
+    to {
+        opacity: 100%;
+    }
+}
+@keyframes startForm{
+    from {
+        transform:translateX(-100px);
+        opacity: 0%;
+    }
+    to {
+        transform:translateX(0px);
+        opacity: 100%;
+    }
+}
+
+main {
+    height: 90vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+.btns {
+    display: flex;
+    justify-content: space-around;
+}
+table, tr, td {
+    margin: auto;
+}
+td {
+    padding-top: 50px;
+}
+::-webkit-input-placeholder {
+    color: rgba(255, 255, 255, .8);
+}
+table {
+    margin-top: 22vh;
+    animation-name: startForm;
+    animation-duration: 1.5s;
+}
+#logo {
+    opacity: 0%;
+    align-self: center;
+    animation-name: startLogo;
+    animation-duration: 1.5s;
+    animation-delay: 1s;
+    animation-fill-mode: forwards;
+}
+th {
+    padding-top: 20px;
+}

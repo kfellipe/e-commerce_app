@@ -1,0 +1,10 @@
+@charset "UTF-8";
+
+table {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20vh;
+}
+th, tr {
+    padding: 20px;
+}
