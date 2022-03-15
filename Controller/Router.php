@@ -35,14 +35,14 @@ if (isset($_POST['login'])){
     $username = strtr($_SESSION['logado'], $caracteres_sem_acento);
     header("Location: ../atualizar-usuario/$username");
 } elseif (isset($_POST['perfil'])){
-    $_SESSION['site'] = "Perfil do usuário";
+    $_SESSION['site'] = "Perfil de ".$_SESSION['logado'];
     $username = strtr($_SESSION['logado'], $caracteres_sem_acento);
     header("Location: ../perfil/$username");
 } elseif (isset($_POST['logout'])){
     include_once "usersController/loginController.php";
 } elseif (isset($_POST['logar'])){
     include_once "usersController/loginController.php";
-} elseif (isset($_POST['product'])){
+} elseif (isset($_POST['meus-anuncios'])){
     $_SESSION['site'] = "Meus anuncios";
     header("Location: ../meus-anuncios");
 } elseif (isset($_POST['create-product'])){
@@ -50,4 +50,6 @@ if (isset($_POST['login'])){
     header("Location: ../cadastrar-produto");
 } elseif (isset($_POST['sub-create-product'])){
     include_once "productsController/postController.php";
+} elseif (isset($_POST['sub-update-product'])){
+    include_once "productsController/updateController.php";
 }

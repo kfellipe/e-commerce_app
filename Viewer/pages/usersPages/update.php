@@ -1,10 +1,10 @@
 <?php 
-
-include_once "../pages/partials/head.html";
-include_once "../../Controller/validateController.php";
+$root = $_SERVER['DOCUMENT_ROOT'];
+include_once "$root/Viewer/pages/partials/head.html";
+include_once "$root/Controller/validateController.php";
 
 ?>
-<link rel="stylesheet" href="../Viewer/css/update.css">
+<link rel="stylesheet" href="../Viewer/css/usersCss/update.css">
 </head>
 <body>
     <form action="../../Controller/Router.php" method="POST">

@@ -3,14 +3,19 @@ $root = $_SERVER['DOCUMENT_ROOT'];
 include_once "$root/Controller/validateController.php";
 include_once "$root/Viewer/pages/partials/head.html";
 ?>
-<link rel="stylesheet" href="../Viewer/css/perfil.css">  
+<link rel="stylesheet" href="../Viewer/css/usersCss/perfil.css">  
 </head>
 <body>
     <?php if(isset($_SESSION['logado'])){
-        include_once "../../../Viewer/pages/partials/headerLogado.html";
+        include_once "$root/Viewer/pages/partials/headerLogado.html";
     } else {
-        include_once "../../../Viewer/pages/partials/header.html";
-    } ?>
+        include_once "$root/Viewer/pages/partials/header.html";
+    } 
+    if(isset($_SESSION['message'])){
+        echo "<div class='popup'>".$_SESSION['message']."</div>";
+        unset($_SESSION['message']);
+    }
+    ?>
     <main>
         <table>
             <tr>

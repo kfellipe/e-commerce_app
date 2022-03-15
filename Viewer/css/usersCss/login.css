@@ -25,11 +25,7 @@ main {
     flex-direction: row;
     justify-content: space-evenly;
 }
-.btns {
-    display: flex;
-    justify-content: space-around;
-}
-table, tr, td {
+table, tr, th {
     margin: auto;
 }
 td {
@@ -53,4 +49,8 @@ table {
 }
 th {
     padding-top: 20px;
+}
+.btn {
+    margin-left: 40px;
+    margin-right: 40px;
 }

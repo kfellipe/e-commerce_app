@@ -6,7 +6,7 @@ if(isset($_SESSION['logado'])){
 }
 include_once "$root/Viewer/pages/partials/head.html";
 ?>
-<link rel="stylesheet" href="/Viewer/css/login.css">
+<link rel="stylesheet" href="/Viewer/css/usersCss/login.css">
 </head>
 <body>
     <?php
@@ -18,18 +18,16 @@ include_once "$root/Viewer/pages/partials/head.html";
     <main>
         <form action="Controller/Router.php" method="POST">
         <table>
-            <tr><td>
+            <tr><th colspan="2"> 
                 <input type="text" placeholder="Usuário" name="Username" id="Username">
-            </tr></td>
-            <tr><td>
+            </tr></th>
+            <tr><th colspan="2">
             <input type="password" placeholder="Senha" name="Password" id="Password">
-            </tr></td>
-            <tr><td>
-                <div class="btns">
+            </tr></th>
+            <tr><th colspan="2">     
             <input type="submit" value="Logar" name="logar" class="btn" id="login">
             <input type="submit" value="Registrar" name="register" class="btn" id="registrar">
-                </div>
-            </tr></td>
+            </tr></th>
             <tr><th colspan="2"><input type="submit" value="Voltar" name="home" class="btn"></th></tr>
             </table>    
         </form>
@@ -38,5 +36,5 @@ include_once "$root/Viewer/pages/partials/head.html";
 </body>
 </html>
 <?php 
-session_unset();
-session_destroy();?>
+unset($_SESSION['logado']);
+?>

@@ -1,14 +1,14 @@
 <header>
     <div class="container-logo"><h1>Logo</h1></div>
+    <div class="container-site"><h1><?php echo $_SESSION['site']; ?></h1></div>
     <div class="container-dropdown">
     <div class="menu" id="perfil"> <?php echo $_SESSION['logado']; ?> 
-    <div class="arrow"> <img src="../../Viewer/pages/img/rightArrow.png" width="15px"
-        height="15px" alt="testando"> </div>
+    <div class="arrow"> <img src="../../Viewer/img/rightArrow.png" width="15px" height="15px" alt="testando"> </div>
     </div>
-        <form action="../../Controller/Router.php" method="POST">
+        <form action="../Controller/Router.php" method="POST">
             <input type="submit" value="Perfil" name="perfil" class="menu">
-            <input type="submit" value="Produtos" name="home" class="menu">
-            <input type="submit" value="Meus Anuncios" name="product" class="menu">
+            <input type="submit" value="Home" name="home" class="menu">
+            <input type="submit" value="Meus Anuncios" name="meus-anuncios" class="menu">
             <input type="submit" value="Logout" name="logout" class="menu">
         </form>
     </div>

@@ -1,0 +1,32 @@
+@charset "UTF-8";
+
+.container-item {
+    margin-top: 50px;
+    height: 70vh;
+    width: 100%;
+    display: flex;
+}
+.container-img {
+    display: flex;
+    align-items: center;
+    width: 35%;
+    height: 70vh;
+    margin-left: 5%;
+    border-right: 1px solid black;
+    padding-right: 5%;
+    border-left: 2px solid transparent;
+    border-image: linear-gradient(0deg, rgba(0, 0, 0, 0) , rgb(0, 0, 0), rgba(0, 0, 0, 0));
+    border-image-slice: 1;
+    border-left: rgba(0, 0, 0, 0);
+}
+.img-product {
+    width: 100%;
+    height: auto;
+}
+.container-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 55%;
+}

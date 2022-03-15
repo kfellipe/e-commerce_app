@@ -41,23 +41,22 @@ header {
 .btn {
     color: rgb(255, 255, 255);
     transform: scale(1.1);
-    transition: transform .2s, background .2s;
+    transition: transform .1s, background .1s;
 }
 .btn:hover {
     transform: scale(1.2);
     background: rgba(0, 0, 0, .3);
 }
 input {
-    font-family: 'Oswald', sans-serif;
-    font-size: 13pt;
-    color: rgba(255, 255, 255, 1);
+    width: 166px;
+    height: 32px;
     background: rgba(0, 0, 0, .13);
     border: 2px solid rgba(0, 0, 0, 0);
-    border-radius: 10px;
-    border-bottom-right-radius: 0px;
-    border-top-left-radius: 0px;
-    border-left: 2px solid black;
-    border-bottom: 2px solid rgb(0, 0, 0);
+    border-bottom-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom: 2px solid black;
+    border-left: 2px solid rgb(0, 0, 0);
+    font-weight: bold;
 }
 .menu {
     display: flex;
@@ -126,4 +125,10 @@ input {
 }
 .logo {
     cursor: default;
+}
+.container-site {
+    font-weight: bolder;
+    height: 100%;
+    display: flex;
+    align-items: center;
 }

@@ -1,0 +1,15 @@
+@charset "UTF-8";
+
+main {
+    margin-top: 15vh;
+    display: flex;
+    justify-content: center;
+}
+th {
+    padding: 10px;
+} 
+.btns {
+    width: 30vw;
+    display: flex;
+    justify-content: space-between;
+}

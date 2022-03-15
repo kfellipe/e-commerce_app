@@ -1,7 +1,8 @@
 <?php
-include_once "../../Viewer/pages/partials/head.html";
+$root = $_SERVER['DOCUMENT_ROOT'];
+include_once "$root/Viewer/pages/partials/head.html";
 ?>
-<link rel="stylesheet" href="../Viewer/css/registrar.css">
+<link rel="stylesheet" href="../Viewer/css/usersCss/registrar.css">
 </head>
 <body>
     <table>
@@ -37,6 +38,5 @@ include_once "../../Viewer/pages/partials/head.html";
             </tr>
         </form>
     </table>
-    <a href="Viewer/pages/teste.php">teste</a>
 </body>
 </html>
