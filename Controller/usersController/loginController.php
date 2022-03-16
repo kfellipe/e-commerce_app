@@ -33,7 +33,7 @@ if(isset($_POST['logout'])){
             $_SESSION['site'] = "Perfil de ".$_SESSION['logado'];
             header("Location: ../perfil/$username");
         } else {
-            $_SESSION['logado'] = false;
+            unset($_SESSION['logado']);
             $_SESSION['message'] = "Nome ou Senha incorretos!";
             echo "Nome ou Senha incorretos!";
             header("Location: ../");

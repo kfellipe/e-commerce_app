@@ -1,0 +1,19 @@
+@charset "UTF-8";
+
+main {
+    margin-top: 20vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 50vw;
+    margin-left: auto;
+    margin-right: auto;
+}
+.btn {
+    margin: 20px;
+}
+.btns {
+    display: flex;
+    flex-direction: row;
+}

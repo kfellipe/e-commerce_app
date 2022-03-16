@@ -52,4 +52,12 @@ if (isset($_POST['login'])){
     include_once "productsController/postController.php";
 } elseif (isset($_POST['sub-update-product'])){
     include_once "productsController/updateController.php";
+} elseif (isset($_POST['delete-product'])){
+    $_SESSION['site'] = "Deletar produto";
+    header("Location: ../deletar-produto/".$_SESSION['id-produto']);
+} elseif (isset($_POST['update-product'])){
+    header("Location: ../atualizar-produto/".$_SESSION['id-produto']);
+} elseif (isset($_POST['sub-delete-product'])){
+    echo "chegou aqui";
+    include_once "productsController/deleteController.php";
 }

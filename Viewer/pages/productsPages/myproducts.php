@@ -1,4 +1,6 @@
 <?php 
+session_start();
+$_SESSION['site'] = "Meus Anuncios";
 $root = $_SERVER['DOCUMENT_ROOT'];
 include_once "$root/Model/users.php";
 include_once "$root/Model/products.php";
@@ -25,11 +27,15 @@ include_once "$root/Viewer/pages/partials/headerLogado.html"; ?>
 <?php
     if($num > 0){
         do {
-            echo "<table class='container-products' onclick='update_product(". $fetch['Id_Product'] .")'>
-            <tr><th onclick='location.href = '../teste''>Nome: ". $fetch['Name'] ."</th></tr>
-            <tr><th>Preço: ". $fetch['Price'] ."</th></tr>
-            <tr><th>Quantidade: ". $fetch['Quantity'] ."</th></tr>
-        </table>";
+            echo "
+                    <div class='container-products' onclick='update_product(".$fetch['Id_Product'].")'>
+                    <div class='img-produto'><img src='".$fetch['Img_Product']."'></div>
+                    <table onclick='product(".$fetch['Id_Product'].")' class='container-product-infos'>
+                    <tr><th>Nome: ". $fetch['Name'] ."</th></tr>
+                    <tr><th>Preço: R$ ". $fetch['Price'] ."</th></tr>
+                    <tr><th>Estoque: ". $fetch['Quantity'] ."</th></tr>
+                    </table>
+                    </div>";
         } while($fetch = mysqli_fetch_assoc($cur));
     }
 ?>

@@ -22,13 +22,12 @@ body {
     background: linear-gradient(90deg,rgb(21, 223, 238), rgb(0, 141, 197));
 }
 a:link {
-    color: rgb(85, 4, 161);
-    font-weight: bolder;
+    color: rgb(0, 0, 0);
     text-decoration: none;
 }
 a:visited {
-    color: rgb(34, 5, 141);
-    font-weight: bolder;
+    color: rgb(0, 0, 0);
+    text-decoration: none;
 }
 header {
     display: flex;
@@ -39,6 +38,15 @@ header {
     border-bottom: 2px solid black;
 }
 .btn {
+    width: 166px;
+    height: 32px;
+    background: rgba(0, 0, 0, .13);
+    border: 2px solid rgba(0, 0, 0, 0);
+    border-bottom-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom: 2px solid black;
+    border-left: 2px solid rgb(0, 0, 0);
+    font-weight: bold;
     color: rgb(255, 255, 255);
     transform: scale(1.1);
     transition: transform .1s, background .1s;
@@ -82,6 +90,7 @@ input {
     border-top: none;
     transition: height .3s, border-bottom-left-radius .3s;
     height: 65px;
+    z-index: 2;
 }
 .container-dropdown:hover {
     height: 325px;
@@ -131,4 +140,7 @@ input {
     height: 100%;
     display: flex;
     align-items: center;
+}
+::-webkit-input-placeholder {
+    color: rgba(255, 255, 255, .8);
 }

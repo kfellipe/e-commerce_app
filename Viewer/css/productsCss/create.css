@@ -19,3 +19,12 @@ th {
 .btn {
     margin: 30px;
 }
+input[type='file']{
+    display: none;
+}
+label {
+    margin-top: 25px;
+    padding: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+}

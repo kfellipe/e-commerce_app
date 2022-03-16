@@ -9,24 +9,37 @@
 .container-img {
     display: flex;
     align-items: center;
-    width: 35%;
+    width: 30%;
     height: 70vh;
-    margin-left: 5%;
-    border-right: 1px solid black;
-    padding-right: 5%;
-    border-left: 2px solid transparent;
-    border-image: linear-gradient(0deg, rgba(0, 0, 0, 0) , rgb(0, 0, 0), rgba(0, 0, 0, 0));
-    border-image-slice: 1;
-    border-left: rgba(0, 0, 0, 0);
+    margin-left: 10%;
+    padding-right: 10%;
 }
 .img-product {
     width: 100%;
     height: auto;
 }
 .container-info {
+    width: 55%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 55%;
+    justify-content: baseline;
+    border: 2px solid transparent;
+    border-image: linear-gradient(0deg, rgba(0, 0, 0, 0), black, rgba(0, 0, 0, 0));
+    border-image-slice: 1;
+}
+.container-info > div {
+    padding-left: 15px;
+}
+.container-info_title{
+    grid-area: title;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 30pt;
+}
+.container-info_price {
+    grid-area: price;
+    border: 2px solid transparent;
+    border-image: linear-gradient(90deg, black,rgba(0, 0, 0, 0));
+    border-image-slice: 1;
+    border-left: none;
+    width: 40%;
 }

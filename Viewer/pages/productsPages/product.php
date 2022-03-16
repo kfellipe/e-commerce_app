@@ -24,10 +24,10 @@ if(isset($_SESSION['logado'])){
 
 <main>
     <section class="container-item">
-        <div class="container-img">
-            <img class="img-product" src="../Viewer/img/products/teclado.jpg" alt="">
-        </div>
-        <div class="container-info">
+        <section class="container-img">
+            <img class="img-product" src="<?= mysqli_fetch_array($prod->getById($Id))['Img_Product']; ?>" alt="">
+        </section>
+        <section class="container-info">
             <div class="container-info_title">
                 <h2><?= mysqli_fetch_array($prod->getById($Id))['Name']; ?></h2>
             </div>
@@ -35,9 +35,9 @@ if(isset($_SESSION['logado'])){
                 <p><strong>R$ <?= mysqli_fetch_array($prod->getById($Id))['Price']; ?></strong></p>
             </div>
             <div class="container-info_quantity">
-                <p><?= mysqli_fetch_array($prod->getById($Id))['Quantity']; ?></p>
+                <p>em estoque: <?= mysqli_fetch_array($prod->getById($Id))['Quantity']; ?></p>
             </div>
-        </div>
+        </section>
     </section>
 </main>
 

@@ -6,10 +6,15 @@ main {
     justify-content: center;
 }
 th {
+    display: flex;
+    justify-content: center;
     padding: 10px;
 } 
 .btns {
     width: 30vw;
     display: flex;
     justify-content: space-between;
+}
+:-ms-input-placeholder {
+    color: white;
 }

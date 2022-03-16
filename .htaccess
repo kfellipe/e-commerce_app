@@ -12,6 +12,7 @@ RewriteRule ^/?(deletar-usuario)/([a-z,A-Z,0-9]+)/?$ /Viewer/pages/usersPages/de
 RewriteRule ^/?(registrar-usuario)/?$ /Viewer/pages/usersPages/registrar.php [NC]
 RewriteRule ^/?(login)/?$ /Viewer/pages/usersPages/login.php [NC]
 
+RewriteRule ^/?(deletar-produto)/([0-9]+)/?$ /Viewer/pages/productsPages/delete.php?id=$2 [NC]
 RewriteRule ^/?(cadastrar-produto)/?$ /Viewer/pages/productsPages/create.php [NC]
 RewriteRule ^/?(meus-anuncios)/?$ /Viewer/pages/productsPages/myproducts.php [NC]
 RewriteRule ^/?(atualizar-produto)/([0-9]+)/?$ /Viewer/pages/productsPages/update.php?id=$2 [NC]

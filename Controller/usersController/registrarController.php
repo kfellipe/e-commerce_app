@@ -5,7 +5,7 @@ include_once "../Model/users.php";
 
 $user = $_POST['username'];
 $pass = $_POST['password1'];
-if(mysqli_fetch_all($users->get($user))){
+if(mysqli_fetch_all($users->getUser($user))){
     $_SESSION['message'] = "Nome de usuário já existe";
     header("Location: ../");
 } elseif (empty($user)){
@@ -15,8 +15,9 @@ if(mysqli_fetch_all($users->get($user))){
     $_SESSION['message'] = "Senha inválida";
     header("Location: ../");
 } elseif ($_POST['password1'] == $_POST['password2']){
-        $users->post($user, $pass);
+        $users->postUser($user, $pass);
         $_SESSION['message'] = "Cadastro efetuado com sucesso";
+        $_SESSION['logado'] = $user;
         header("Location: ../");
     
 } else {
