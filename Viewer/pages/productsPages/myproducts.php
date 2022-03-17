@@ -6,7 +6,7 @@ include_once "$root/Model/users.php";
 include_once "$root/Model/products.php";
 include_once "$root/Controller/validateController.php";
 include_once "$root/Viewer/pages/partials/head.html";
-$cur = $prod->getByOwner();
+$cur = $prod->getProdByOwner();
 $fetch = mysqli_fetch_assoc($cur);
 $num = mysqli_num_rows($cur);
 

@@ -4,7 +4,7 @@ session_start();
 
 include_once "$root/Model/products.php";
 
-if(unlink(mysqli_fetch_array($prod->getById($_SESSION['id-produto']))['Img_Product'])){
+if(unlink(mysqli_fetch_array($prod->getProdById($_SESSION['id-produto']))['Img_Product'])){
     if($prod->deleteProduct($_SESSION['id-produto'])){
         unset($_SESSION['id-produto']);
         $_SESSION['message'] = "Produto deletado com sucesso";

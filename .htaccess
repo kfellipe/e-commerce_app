@@ -7,7 +7,7 @@ RewriteRule ^([a-z,A-Z,0-9,_-])$ index.php
 Options All -Indexes
 
 RewriteRule ^/?(atualizar-usuario)/([a-z,A-Z,0-9]+)/?$ /Viewer/pages/usersPages/update.php?nome=$2 [NC]
-RewriteRule ^/?(perfil)/([a-z,A-Z,0-9]+)/?$ /Viewer/pages/usersPages/perfil.php?nome=$2 [NC]
+RewriteRule ^/?(meu-perfil)/?$ /Viewer/pages/usersPages/myprofile.php [NC]
 RewriteRule ^/?(deletar-usuario)/([a-z,A-Z,0-9]+)/?$ /Viewer/pages/usersPages/delete.php?nome=$2 [NC]
 RewriteRule ^/?(registrar-usuario)/?$ /Viewer/pages/usersPages/registrar.php [NC]
 RewriteRule ^/?(login)/?$ /Viewer/pages/usersPages/login.php [NC]

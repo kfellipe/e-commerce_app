@@ -4,19 +4,22 @@ include_once "users.php";
 
 class prod extends users {
     public function postProduct($name, $price, $quantity, $img){
-        return mysqli_query($this->conn(), "INSERT INTO products(Name, Price, Quantity, Id_Owner, Img_Product) VALUES('$name', '$price', '$quantity', ".mysqli_fetch_array($this->getUser($_SESSION['logado']))['Id_Person'].", '$img')");
+        return mysqli_query($this->conn(), "INSERT INTO products(Name, Price, Quantity, Id_Owner, Img_Product) VALUES('$name', '$price', '$quantity', ".mysqli_fetch_array($this->getUserByName($_SESSION['logado']))['Id_Person'].", '$img')");
     }
-    public function getAll(){
+    public function getProdAll(){
         return mysqli_query($this->conn(), "SELECT * FROM products");
     }
-    public function getByOwner(){
-        return mysqli_query($this->conn(), "SELECT * FROM products WHERE Id_Owner = ".mysqli_fetch_array($this->getUser($_SESSION['logado']))['Id_Person']);
+    public function getProdByOwner(){
+        return mysqli_query($this->conn(), "SELECT * FROM products WHERE Id_Owner = ".mysqli_fetch_array($this->getUserByName($_SESSION['logado']))['Id_Person']);
     }
-    public function getById($Id){
+    public function getProdById($Id){
         return mysqli_query($this->conn(), "SELECT * FROM products WHERE Id_Product = $Id");
     }
-    public function getUserOwner($id){
+    public function getProdUserOwner($id){
         return mysqli_query($this->conn(), "SELECT U.Name FROM users AS U JOIN products as P ON U.Id_Person = $id");
+    }
+    public function getProdBySearch($query){
+        return mysqli_query($this->conn(), "SELECT * FROM products WHERE Name LIKE '%$query%'");
     }
     public function deleteProduct($Id){
         return mysqli_query($this->conn(), "DELETE FROM products WHERE Id_Product = $Id");

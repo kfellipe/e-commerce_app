@@ -17,7 +17,7 @@ include_once "$root/Viewer/pages/partials/head.html";
                 <tr><th> <input type="text" name="quantity" placeholder="Quantidade do estoque"> </th></tr>
                 <tr><th> 
                 <label for="selecionar-arquivo" class="btn">Selecione uma foto</label>    
-                <input type="file" id="selecionar-arquivo" name="arquivo"> </th></tr>
+                <input type="file" accept="image/jpg, image/png, image/jpeg" id="selecionar-arquivo" name="arquivo"> </th></tr>
                 <tr><th> <input type="submit" name="sub-create-product" value="Cadastrar" class="btn">
                 <input name="meus-anuncios" type="submit" value="Meus Anuncios" class="btn"></th></tr>
             </table>

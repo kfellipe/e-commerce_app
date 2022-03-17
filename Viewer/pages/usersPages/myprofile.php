@@ -1,21 +1,19 @@
 <?php
 session_start();
 $root = $_SERVER['DOCUMENT_ROOT'];
+$_SESSION['site'] = "Meu Perfil";
 include_once "$root/Controller/validateController.php";
 include_once "$root/Viewer/pages/partials/head.html";
 ?>
 <link rel="stylesheet" href="../Viewer/css/usersCss/perfil.css">  
 </head>
 <body>
-    <?php if(isset($_SESSION['logado'])){
-        include_once "$root/Viewer/pages/partials/headerLogado.html";
-    } else {
-        include_once "$root/Viewer/pages/partials/header.html";
-    } 
+    <?php 
     if(isset($_SESSION['message'])){
         echo "<div class='popup'>".$_SESSION['message']."</div>";
         unset($_SESSION['message']);
     }
+    include_once "$root/Viewer/pages/partials/headerLogado.html";
     ?>
     <main>
         <table>

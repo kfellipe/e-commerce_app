@@ -19,23 +19,23 @@ if(isset($_SESSION['logado'])){
 } else {
     include_once "$root/Viewer/pages/partials/header.html";
 }
-
+$fetch = $prod->getProdById($Id);
 ?>
 
 <main>
     <section class="container-item">
         <section class="container-img">
-            <img class="img-product" src="<?= mysqli_fetch_array($prod->getById($Id))['Img_Product']; ?>" alt="">
+            <img class="img-product" src="<?= mysqli_fetch_array($fetch)['Img_Product']; ?>" alt="">
         </section>
         <section class="container-info">
             <div class="container-info_title">
-                <h2><?= mysqli_fetch_array($prod->getById($Id))['Name']; ?></h2>
+                <h2><?= mysqli_fetch_array($prod->getProdById($Id))['Name']; ?></h2>
             </div>
             <div class="container-info_price">
-                <p><strong>R$ <?= mysqli_fetch_array($prod->getById($Id))['Price']; ?></strong></p>
+                <p><strong>R$ <?= mysqli_fetch_array($prod->getProdById($Id))['Price']; ?></strong></p>
             </div>
             <div class="container-info_quantity">
-                <p>em estoque: <?= mysqli_fetch_array($prod->getById($Id))['Quantity']; ?></p>
+                <p>em estoque: <?= mysqli_fetch_array($prod->getProdById($Id))['Quantity']; ?></p>
             </div>
         </section>
     </section>

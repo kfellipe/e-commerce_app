@@ -5,7 +5,7 @@ include_once "../Model/users.php";
 
 $user = $_POST['username'];
 $pass = $_POST['password1'];
-if(mysqli_fetch_all($users->getUser($user))){
+if(mysqli_fetch_all($users->getUserByName($user))){
     $_SESSION['message'] = "Nome de usuário já existe";
     header("Location: ../");
 } elseif (empty($user)){

@@ -20,13 +20,13 @@ if ($Name == "" && $Price <= 0 && $Quantity <= 0){
     header("Location: ../meus-anuncios");
 } else {
     if ($Name == ""){
-        $Name = mysqli_fetch_array($prod->getById(2))['Name'];
+        $Name = mysqli_fetch_array($prod->getProdById(2))['Name'];
     }
     if ($Price <= 0){
-        $Price = intval(mysqli_fetch_array($prod->getById(2))['Price']);
+        $Price = intval(mysqli_fetch_array($prod->getProdById(2))['Price']);
     }
     if ($Quantity <= 0){
-        $Quantity = intval(mysqli_fetch_array($prod->getById(2))['Quantity']);
+        $Quantity = intval(mysqli_fetch_array($prod->getProdById(2))['Quantity']);
     }
     if($Price > 0 && $Quantity > 0){
         $prod->updateProduct($id, $Name, $Price, $Quantity);

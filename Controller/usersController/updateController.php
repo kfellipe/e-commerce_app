@@ -24,7 +24,7 @@ if($_POST['user'] == ""){
         $passNew = $_POST['passNew'];
     }
 }
-if(mysqli_num_rows($users->getUser($_POST['user'])) >= 1){
+if(mysqli_num_rows($users->getUserByName($_POST['user'])) >= 1){
     $_SESSION['message'] = "Nome de usuário já existe!";
     $username = strtr($_SESSION['logado'], $caracteres_sem_acento);
     #echo "usuario ja existe";
@@ -32,13 +32,13 @@ if(mysqli_num_rows($users->getUser($_POST['user'])) >= 1){
 } elseif ($_POST['user'] != "") {
     $userNew = $_POST['user'];
     if($_POST['passCurr'] == "" && $_POST['passNew'] == ""){
-        $passCurrently = mysqli_fetch_array($users->getUser($_SESSION['logado']))['Password'];
+        $passCurrently = mysqli_fetch_array($users->getUserByName($_SESSION['logado']))['Password'];
         $passNew = mysqli_fetch_array($users->getUser($_SESSION['logado']))['Password'];
     }
-    if(mysqli_fetch_array($users->getUser($_SESSION['logado']))['Password'] == $passCurrently){
+    if(mysqli_fetch_array($users->getUserByName($_SESSION['logado']))['Password'] == $passCurrently){
         $userCurr = $_SESSION['logado'];
         $_SESSION['logado'] = $userNew;
-        $users->updateUser($userCurr, $userNew, $passNew);
+        $users->updateUserByName($userCurr, $userNew, $passNew);
         $userNew = strtr($userNew, $caracteres_sem_acento);
         $_SESSION['message'] = "Atualizado com sucesso!";
         #echo "atualizado com sucesso";

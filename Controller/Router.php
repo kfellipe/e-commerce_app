@@ -15,6 +15,8 @@ if (isset($_POST['login'])){
     $_SESSION['site'] = "Fazer LogIn";
     header("Location: ../login");
 } elseif (isset($_POST['home'])){
+    unset($_SESSION['query']);
+    unset($_SESSION['filter']);
     $_SESSION['site'] = "Home";
     header("Location: ../home");
 } elseif (isset($_POST['register'])){
@@ -34,10 +36,8 @@ if (isset($_POST['login'])){
     $_SESSION['site'] = "Atualizar dados";
     $username = strtr($_SESSION['logado'], $caracteres_sem_acento);
     header("Location: ../atualizar-usuario/$username");
-} elseif (isset($_POST['perfil'])){
-    $_SESSION['site'] = "Perfil de ".$_SESSION['logado'];
-    $username = strtr($_SESSION['logado'], $caracteres_sem_acento);
-    header("Location: ../perfil/$username");
+} elseif (isset($_POST['meu-perfil'])){
+    header("Location: ../meu-perfil");
 } elseif (isset($_POST['logout'])){
     include_once "usersController/loginController.php";
 } elseif (isset($_POST['logar'])){
@@ -58,6 +58,7 @@ if (isset($_POST['login'])){
 } elseif (isset($_POST['update-product'])){
     header("Location: ../atualizar-produto/".$_SESSION['id-produto']);
 } elseif (isset($_POST['sub-delete-product'])){
-    echo "chegou aqui";
     include_once "productsController/deleteController.php";
+} elseif (isset($_POST['query'])){
+    include_once "productsController/queryController.php";
 }

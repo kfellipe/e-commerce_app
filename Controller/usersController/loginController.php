@@ -13,7 +13,7 @@ if(isset($_POST['logout'])){
 } else {
     $username = $_POST['Username'];
     $password = $_POST['Password'];
-    $cur = $users->getUser($username);
+    $cur = $users->getUserByName($username);
     if(mysqli_num_rows($cur) >= 1){
         if($password == mysqli_fetch_array($cur)['Password']){
             $_SESSION['logado'] = $username;
@@ -30,8 +30,8 @@ if(isset($_POST['logout'])){
             $username = strtr($username, $caracteres_sem_acento);
             #echo "logado com sucesso";
             #echo $_SESSION['logado'];
-            $_SESSION['site'] = "Perfil de ".$_SESSION['logado'];
-            header("Location: ../perfil/$username");
+            $_SESSION['site'] = "Meu Perfil";
+            header("Location: ../meu-perfil");
         } else {
             unset($_SESSION['logado']);
             $_SESSION['message'] = "Nome ou Senha incorretos!";
