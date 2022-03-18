@@ -14,6 +14,9 @@ class users extends conn {
     public function getUserBySearch($query){
         return mysqli_query($this->conn(), "SELECT * FROM users WHERE Name LIKE '%$query%'");
     }
+    public function getUserProdOwner($id){
+        return mysqli_query($this->conn(), "SELECT U.Name FROM users AS U JOIN products as P ON U.Id_Person = $id");
+    }
     public function updateUser($userCurr, $userNew, $passNew){
         return mysqli_query($this->conn(), "UPDATE `users` SET `Name` = '$userNew', `Password` = '$passNew' WHERE `Name` = '$userCurr'");
     }

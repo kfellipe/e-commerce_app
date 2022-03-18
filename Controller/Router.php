@@ -60,5 +60,6 @@ if (isset($_POST['login'])){
 } elseif (isset($_POST['sub-delete-product'])){
     include_once "productsController/deleteController.php";
 } elseif (isset($_POST['query'])){
-    include_once "productsController/queryController.php";
+    $_SESSION['array-query'] = ["query"=>$_POST['query'], "filter"=>$_POST['filter']];
+    header("Location: ../home");
 }

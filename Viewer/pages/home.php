@@ -21,7 +21,7 @@ $num = mysqli_num_rows($cur);
 $fetch = mysqli_fetch_assoc($cur);
 
 ?>
-<link rel="stylesheet" href="Viewer/css/productsCss/products.css">
+<link rel="stylesheet" href="Viewer/css/productsCss/home.css">
 </head>
 <body>
     <?php if(isset($_SESSION['logado'])){
@@ -41,66 +41,28 @@ $fetch = mysqli_fetch_assoc($cur);
                 <input type="search" name="query" placeholder="Pesquisar">
                 <label for="filter">Filtro: </label>
                 <select class="select" name="filter" id="filter">
-                    <option name="filter-product" class="option" value="product">Produto</option>
-                    <option class="option" name="filter-user" value="user">Usuário</option>
+                    <option name="filter-product" class="option" value="product">Produtos</option>
+                    <option class="option" name="filter-user" value="user">Usuários</option>
                 </select>
             </form>
-            <?php if(isset($_SESSION['query'])){
-                echo "<h3>Exibindo resultados relacionados à '".$_SESSION['query']."'</h3>";
-            } ?>
+            <?php 
+            if(isset($_SESSION['array-query']['query'])){
+                echo "<h3>Exibindo resultados relacionados à '".$_SESSION['array-query']['query']."'</h3>";
+?>
         </section>
         <section class="container-main-products">
             <?php 
-                if(isset($_SESSION['query'])){
-                    if($_SESSION['filter'] == "product"){
-                        if(!mysqli_num_rows($prod->getProdBySearch($_SESSION['query'])) <= 0){
-                            echo "Nenhum resultado encontrado";
-                        } else {
-                            $cur = $prod->getProdBySearch($_SESSION['query']);
-                            $search = mysqli_fetch_assoc($cur);
-                            do {
-                                echo "
-                            <div class='container-products' onclick='product(".$search['Id_Product'].")'>
-                            <div class='img-produto'><img src='".$search['Img_Product']."'></div>
-                            <table class='container-product-infos'>
-                            <tr><th>". $search['Name'] ."</th></tr>
-                            <tr><th>R$ ". $search['Price'] ."</th></tr>
-                            <tr><th style='font-size: 10pt'>Anunciante: ". mysqli_fetch_array($prod->getProdUserOwner($search['Id_Owner']))['Name'] ."</th></tr>
-                            </table>
-                            </div>";
-                            } while($search = mysqli_fetch_assoc($cur)); 
-                        }
-                    } else {
-                        if(!mysqli_num_rows($users->getUserBySearch($_SESSION['query'])) <= 0){
-                            echo "Nenhum resultado encontrado";
-                        } else {
-                            echo "Filtro usuário";
-                            $cur = $users->getUserBySearch($_SESSION['query']);
-                            $fetch = mysqli_fetch_assoc($cur);
-                            $urlName = strtr($fetch['Name'], $caracteres_sem_acento);
-                            $anuncios = mysqli_num_rows($prod->getProdByOwner($fetch['Id_Person']));
-                            do {
-                                echo "
-                            <div class='container-products' onclick='perfil($urlName)'>
-                            <div class='img-produto'><img src='https://img.icons8.com/ios-glyphs/30/000000/user--v1.png'></div>
-                            <table class='container-product-infos'>
-                            <tr><th>". $fetch['Name'] ."</th></tr>
-                            <tr><th>Anuncios: $anuncios</th></tr>
-                            </table>
-                            </div>";
-                            } while($fetch = mysqli_fetch_assoc($cur)); 
-                        }
-                    }
-                } else {
-                    if($num > 0){
-                        do {
-                            echo "
-                        <div class='container-products' onclick='product(".$fetch['Id_Product'].")'>
+                    include_once "$root/Controller/queryController.php";
+                    unset($_SESSION['array-query']);
+            } else {
+                if($num > 0){
+                    do {
+                        echo "<div class='container-products' onclick='product(".$fetch['Id_Product'].")'>
                         <div class='img-produto'><img src='".$fetch['Img_Product']."'></div>
                         <table class='container-product-infos'>
                         <tr><th>". $fetch['Name'] ."</th></tr>
                         <tr><th>R$ ". $fetch['Price'] ."</th></tr>
-                        <tr><th style='font-size: 10pt'>Anunciante: ". mysqli_fetch_array($prod->getProdUserOwner($fetch['Id_Owner']))['Name'] ."</th></tr>
+                        <tr><th style='font-size: 10pt'>Anunciante: ". mysqli_fetch_array($prod->getUserProdOwner($fetch['Id_Owner']))['Name'] ."</th></tr>
                         </table>
                         </div>";
                         } while($fetch = mysqli_fetch_assoc($cur));

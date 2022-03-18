@@ -27,5 +27,6 @@ if(isset($_POST['submit'])){
 </head>
 <body>
     <?php echo mysqli_fetch_array(mysqli_query(mysqli_connect("localhost", "root", "", "db"), "SELECT U.Name FROM users AS U INNER JOIN products as P WHERE U.Id_Person = 5"))['Name']; ?>
+    <img src="../Viewer/img/user.png" alt="">
 </body>
 </html>

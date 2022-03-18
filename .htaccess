@@ -11,6 +11,7 @@ RewriteRule ^/?(meu-perfil)/?$ /Viewer/pages/usersPages/myprofile.php [NC]
 RewriteRule ^/?(deletar-usuario)/([a-z,A-Z,0-9]+)/?$ /Viewer/pages/usersPages/delete.php?nome=$2 [NC]
 RewriteRule ^/?(registrar-usuario)/?$ /Viewer/pages/usersPages/registrar.php [NC]
 RewriteRule ^/?(login)/?$ /Viewer/pages/usersPages/login.php [NC]
+RewriteRule ^/?(perfil)/([a-z,A-Z]+)/?$ /Viewer/pages/usersPages/perfil.php?nome=$2 [NC]
 
 RewriteRule ^/?(deletar-produto)/([0-9]+)/?$ /Viewer/pages/productsPages/delete.php?id=$2 [NC]
 RewriteRule ^/?(cadastrar-produto)/?$ /Viewer/pages/productsPages/create.php [NC]

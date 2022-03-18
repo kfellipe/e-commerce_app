@@ -9,14 +9,11 @@ class prod extends users {
     public function getProdAll(){
         return mysqli_query($this->conn(), "SELECT * FROM products");
     }
-    public function getProdByOwner(){
-        return mysqli_query($this->conn(), "SELECT * FROM products WHERE Id_Owner = ".mysqli_fetch_array($this->getUserByName($_SESSION['logado']))['Id_Person']);
+    public function getProdByOwner($Id){
+        return mysqli_query($this->conn(), "SELECT * FROM products WHERE Id_Owner = $Id");
     }
     public function getProdById($Id){
         return mysqli_query($this->conn(), "SELECT * FROM products WHERE Id_Product = $Id");
-    }
-    public function getProdUserOwner($id){
-        return mysqli_query($this->conn(), "SELECT U.Name FROM users AS U JOIN products as P ON U.Id_Person = $id");
     }
     public function getProdBySearch($query){
         return mysqli_query($this->conn(), "SELECT * FROM products WHERE Name LIKE '%$query%'");

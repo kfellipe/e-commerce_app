@@ -5,7 +5,7 @@ $_SESSION['site'] = "Meu Perfil";
 include_once "$root/Controller/validateController.php";
 include_once "$root/Viewer/pages/partials/head.html";
 ?>
-<link rel="stylesheet" href="../Viewer/css/usersCss/perfil.css">  
+<link rel="stylesheet" href="../Viewer/css/usersCss/myprofile.css">  
 </head>
 <body>
     <?php 

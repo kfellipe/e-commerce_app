@@ -1,0 +1,12 @@
+@charset "UTF-8";
+
+table {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 15vh;
+}
+.btn {
+    margin-left: 25px;
+}
