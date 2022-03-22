@@ -6,18 +6,19 @@ RewriteRule ^([a-z,A-Z,0-9,_-])$ index.php
 
 Options All -Indexes
 
-RewriteRule ^/?(atualizar-usuario)/([a-z,A-Z,0-9]+)/?$ /Viewer/pages/usersPages/update.php?nome=$2 [NC]
+RewriteRule ^/?(atualizar-usuario)/([0-9]+)/?$ /Viewer/pages/usersPages/update.php?id-user=$2 [NC]
 RewriteRule ^/?(meu-perfil)/?$ /Viewer/pages/usersPages/myprofile.php [NC]
-RewriteRule ^/?(deletar-usuario)/([a-z,A-Z,0-9]+)/?$ /Viewer/pages/usersPages/delete.php?nome=$2 [NC]
+RewriteRule ^/?(deletar-usuario)/([0-9]+)/?$ /Viewer/pages/usersPages/delete.php?id-user=$2 [NC]
 RewriteRule ^/?(registrar-usuario)/?$ /Viewer/pages/usersPages/registrar.php [NC]
 RewriteRule ^/?(login)/?$ /Viewer/pages/usersPages/login.php [NC]
-RewriteRule ^/?(perfil)/([a-z,A-Z]+)/?$ /Viewer/pages/usersPages/perfil.php?nome=$2 [NC]
+RewriteRule ^/?(perfil)/([0-9]+)/?$ /Viewer/pages/usersPages/perfil.php?id-user=$2 [NC]
+RewriteRule ^/?(meus-amigos)/?$ /Viewer/pages/usersPages/myfriends.php [NC]
 
-RewriteRule ^/?(deletar-produto)/([0-9]+)/?$ /Viewer/pages/productsPages/delete.php?id=$2 [NC]
+RewriteRule ^/?(deletar-produto)/([0-9]+)/?$ /Viewer/pages/productsPages/delete.php?id-product=$2 [NC]
 RewriteRule ^/?(cadastrar-produto)/?$ /Viewer/pages/productsPages/create.php [NC]
 RewriteRule ^/?(meus-anuncios)/?$ /Viewer/pages/productsPages/myproducts.php [NC]
-RewriteRule ^/?(atualizar-produto)/([0-9]+)/?$ /Viewer/pages/productsPages/update.php?id=$2 [NC]
-RewriteRule ^/?(produto)/([0-9]+)/?$ /Viewer/pages/productsPages/product.php?id=$2 [NC]
+RewriteRule ^/?(atualizar-produto)/([0-9]+)/?$ /Viewer/pages/productsPages/update.php?id-product=$2 [NC]
+RewriteRule ^/?(produto)/([0-9]+)/?$ /Viewer/pages/productsPages/product.php?id-product=$2 [NC]
 
 RewriteRule ^/?(teste)/?$ /Viewer/pages/teste.php [NC]
 RewriteRule ^/?(home)/?$ /Viewer/pages/home.php [NC]

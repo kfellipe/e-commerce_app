@@ -4,14 +4,14 @@ $root = $_SERVER['DOCUMENT_ROOT'];
 include_once "$root/Controller/validateController.php";
 include_once "$root/Model/products.php";
 $_SESSION['site'] = "Atualizar Produto";
-include_once "$root/Viewer/pages/partials/head.html";
-$id = $_GET['id'];
+$id = $_GET['id-product'];
 $_SESSION['id-produto'] = $id;
-$cur = mysqli_fetch_array($prod->getById($id));
-if(mysqli_num_rows($prod->getById($id)) <= 0){
+$cur = mysqli_fetch_array($prod->getProdById($id));
+if(mysqli_num_rows($prod->getProdById($id)) <= 0){
     $_SESSION['message'] = "Produto não encontrado";
     header("Location: ../meus-anuncios");
 }
+include_once "$root/Viewer/pages/partials/head.html";
 
 ?>
 <link rel="stylesheet" href="/Viewer/css/productsCss/update.css">

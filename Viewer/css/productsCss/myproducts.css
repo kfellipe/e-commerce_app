@@ -1,0 +1,7 @@
+@charset "UTF-8";
+
+.container-main_products {
+    margin-top: 20px;
+    display: flex;
+    align-items: flex-start;
+}

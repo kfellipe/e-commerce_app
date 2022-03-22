@@ -2,9 +2,14 @@
 session_start();
 $root = $_SERVER['DOCUMENT_ROOT'];
 
-$Id = $_GET['id'];
-
 include_once "$root/Model/products.php";
+$_SESSION['site'] = mysqli_fetch_assoc($prod->getProdById($_GET['id-product']))['Name'];
+$Id = $_GET['id-product'];
+$num = mysqli_num_rows($prod->getProdById($Id));
+if($num <= 0){
+    $_SESSION['message'] = "Produto não encontrado";
+    header("Location: ../home");
+}
 include_once "$root/Viewer/pages/partials/head.html";
 
 
@@ -19,24 +24,32 @@ if(isset($_SESSION['logado'])){
 } else {
     include_once "$root/Viewer/pages/partials/header.html";
 }
-$fetch = $prod->getProdById($Id);
+$fetch = mysqli_fetch_assoc($prod->getProdById($Id));
 ?>
 
 <main>
     <section class="container-item">
         <section class="container-img">
-            <img class="img-product" src="<?= mysqli_fetch_array($fetch)['Img_Product']; ?>" alt="">
+            <img class="img-product" src="<?= $fetch['Img_Product']; ?>" alt="">
         </section>
         <section class="container-info">
             <div class="container-info_title">
-                <h2><?= mysqli_fetch_array($prod->getProdById($Id))['Name']; ?></h2>
+                <h2><?= $fetch['Name']; ?></h2>
             </div>
             <div class="container-info_price">
-                <p><strong>R$ <?= mysqli_fetch_array($prod->getProdById($Id))['Price']; ?></strong></p>
+                <p><strong>R$ <?= $fetch['Price']; ?></strong></p>
             </div>
             <div class="container-info_quantity">
-                <p>em estoque: <?= mysqli_fetch_array($prod->getProdById($Id))['Quantity']; ?></p>
+                <p>em estoque: <?= $fetch['Quantity']; ?></p>
             </div>
+            <div class="container-info_announcer">
+                <h3><a href="../perfil/<?= $fetch['Id_Owner'] ?>"><?= mysqli_fetch_assoc($users->getUserById($fetch['Id_Owner']))['Name'] ?></a></h3>
+            </div>
+            <form action="../../Controller/Router.php" method="POST">
+                <div class="btns">
+                    <input type="submit" value="Comprar" class="btn" name="buy">
+                </div>
+            </form>
         </section>
     </section>
 </main>

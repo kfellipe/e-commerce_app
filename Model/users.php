@@ -5,6 +5,9 @@ class users extends conn {
     public function postUser($user, $pass){
         return mysqli_query($this->conn(), "INSERT INTO users(Name, Password) VALUES ('$user', '$pass')");
     }
+    public function getAllUsers(){
+        return mysqli_query($this->conn(), "SELECT * FROM users");
+    }
     public function getUserByName($user){
         return mysqli_query($this->conn(), "SELECT * FROM `users` WHERE `Name` = '$user'");
     }

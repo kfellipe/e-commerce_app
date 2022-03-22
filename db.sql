@@ -1,9 +1,10 @@
-/*##########-Versão 1.1-##########*/
+/*##########-Versão 1.3-##########*/
 CREATE TABLE users (
     Name varchar(255) NOT NULL,
     Password varchar(255) NOT NULL,
-    Id_Person int(255) AUTO_INCREMENT,
-    PRIMARY KEY (Id)
+    Id_Person int(255) NOT NULL AUTO_INCREMENT,
+    Credits float NOT NULL DEFAULT 0,
+    PRIMARY KEY (Id_Person)
 );
 CREATE TABLE products (
     Name varchar(255) NOT NULL,
@@ -12,14 +13,24 @@ CREATE TABLE products (
     Id_Product int(255) NOT NULL AUTO_INCREMENT,
     Id_Owner int(255) NOT NULL,
     Img_Product varchar(255) NOT NULL,
-    PRIMARY KEY(IdProduct),
-    FOREIGN KEY(IdOwner) REFERENCES users(Id))
+    PRIMARY KEY(Id_Product),
+    FOREIGN KEY(Id_Owner) REFERENCES users(Id_Person)
 );
 CREATE TABLE friends (
-    Id_Friend int(255) AUTO_INCREMENT,
-    Id_Person1 int(255),
-    Id_Person2 int(255),
+    Id_Friend int(255) NOT NULL AUTO_INCREMENT,
+    Id_Sender int(255) NOT NULL,
+    Id_Receiver int(255) NOT NULL,
+    Friend boolean NOT NULL,
     PRIMARY KEY(Id_Friend),
-    FOREIGN KEY(Id_Person1) REFERENCES users(Id_Person),
-    FOREIGN KEY(Id_Person2) REFERENCES users(Id_Person)
-)
+    FOREIGN KEY(Id_Sender) REFERENCES users(Id_Person),
+    FOREIGN KEY(Id_Receiver) REFERENCES users(Id_Person)
+);
+CREATE TABLE sales (
+    Id_Sale int NOT NULL AUTO_INCREMENT,
+    Id_Buyer int NOT NULL,
+    Id_Seller int NOT NULL, 
+    Price int NOT NULL,
+    PRIMARY KEY(Id_Sale),
+    FOREIGN KEY(Id_Buyer) REFERENCES users(Id_Person),
+    FOREIGN KEY(Id_Seller) REFERENCES users(Id_Person)
+);

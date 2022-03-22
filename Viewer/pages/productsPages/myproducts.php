@@ -6,12 +6,13 @@ include_once "$root/Model/users.php";
 include_once "$root/Model/products.php";
 include_once "$root/Controller/validateController.php";
 include_once "$root/Viewer/pages/partials/head.html";
-$cur = $prod->getProdByOwner();
+$cur = $prod->getProdByOwner(mysqli_fetch_assoc($users->getUserByName($_SESSION['logado']))['Id_Person']);
 $fetch = mysqli_fetch_assoc($cur);
 $num = mysqli_num_rows($cur);
 
 ?>
-<link rel="stylesheet" href="Viewer/css/productsCss/products.css">
+<link rel="stylesheet" href="Viewer/css/productsCss/home.css">
+<link rel="stylesheet" href="Viewer/css/productsCss/myproducts.css">
 </head>
 <body>
 <?php 
@@ -23,7 +24,7 @@ if(isset($_SESSION['message'])){
 
 include_once "$root/Viewer/pages/partials/headerLogado.html"; ?>
     <main>
-        <section class="container-main-products">
+        <section class="container-main_products">
 <?php
     if($num > 0){
         do {
