@@ -15,12 +15,12 @@ include_once "$root/Viewer/pages/partials/head.html";
             </tr>
             <tr>
                 <th colspan="2">
-                    <input placeholder="Senha" type="text" name="password1" id="senha">
+                    <input placeholder="Senha" type="password" name="password1" id="senha">
                 </th>
             </tr>
             <tr>
                 <th colspan="2">
-                    <input placeholder="Confirmar senha" type="text" name="password2" id="senha">
+                    <input placeholder="Confirmar senha" type="password" name="password2" id="senha">
                 </th>
             </tr>
             <tr>

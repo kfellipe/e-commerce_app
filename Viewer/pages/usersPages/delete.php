@@ -2,7 +2,6 @@
 session_start();
 $root = $_SERVER['DOCUMENT_ROOT'];
 include_once "$root/Controller/validateController.php";
-$root = $_SERVER['DOCUMENT_ROOT'];
 include_once "$root/Viewer/pages/partials/head.html";
 
 ?>
@@ -16,6 +15,7 @@ include_once "$root/Viewer/pages/partials/head.html";
             <form action="../Controller/Router.php" method="POST">
                     <tr><th><input class="btn" type="submit" value="Deletar" name="sub-delete">
                     <input class="btn" type="submit" value="Voltar" name="perfil"></th></tr>
+                    <input type="hidden" name="id-user" value="<?= $_GET['id-user'] ?>">
             </form>
         </table>
     </main>

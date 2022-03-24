@@ -11,11 +11,7 @@ include_once "$root/Viewer/pages/partials/head.html";
 <link rel="stylesheet" href="Viewer/css/productsCss/home.css">
 </head>
 <body>
-    <?php if(isset($_SESSION['logado'])){
-        include_once "$root/Viewer/pages/partials/headerLogado.html";
-    } else  {
-        include_once "$root/Viewer/pages/partials/header.html";
-    } 
+    <?php include_once "$root/Viewer/pages/partials/header.php";
     if(isset($_SESSION['message'])){
             $message = $_SESSION['message'];
             echo "<div class='popup'>$message</div>";
@@ -23,6 +19,7 @@ include_once "$root/Viewer/pages/partials/head.html";
         }
     ?>
     <main>
+        <ul></ul>
         <section class="container-main_header">
             <form action="../Controller/Router.php" method="POST">
                 <input type="search" name="query" placeholder="Pesquisar">

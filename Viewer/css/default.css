@@ -66,8 +66,13 @@ input {
     border-left: 2px solid rgb(0, 0, 0);
     font-weight: bold;
 }
+ul {
+    margin-left: -40px;
+    list-style-type:none ;
+}
 .menu {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     color: white;
@@ -98,13 +103,6 @@ input {
 .container-dropdown:hover {
     height: 325px;
     border-bottom-left-radius: 10px;
-}
-.arrow {
-    margin-left: 5px;
-    transition: transform .15s;
-}
-.container-dropdown:hover .arrow {
-    transform: rotate(90deg);
 }
 .container-form_dropdown > input{
     border-left: 2px solid black;
@@ -139,13 +137,13 @@ input {
     animation-fill-mode: forwards;
 }
 #perfil {
-    background: none;
-    background-image: linear-gradient(to top, rgba(0, 0, 0, .4), rgba(0, 0, 0, .1),rgba(0, 0, 0, 0));
-    cursor:pointer;
+    background: rgba(0, 0, 0, .15);
+    cursor:default;
     border-top: none;
     font-weight: lighter;
     font-family: 'Oswald', sans-serif;
     color: black;
+    transition: background .2s, color .2s;
 }
 .logo {
     cursor: default;
@@ -158,4 +156,12 @@ input {
 }
 ::-webkit-input-placeholder {
     color: rgba(255, 255, 255, .8);
+}
+#perfil:hover {
+    background: rgba(0, 0, 0, .5);
+    color: white;
+}
+.container-dropdown:hover #perfil {
+    background: rgba(0, 0, 0, .5);
+    color: white;
 }

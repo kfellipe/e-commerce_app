@@ -23,6 +23,12 @@ class users extends conn {
     public function updateUser($userCurr, $userNew, $passNew){
         return mysqli_query($this->conn(), "UPDATE `users` SET `Name` = '$userNew', `Password` = '$passNew' WHERE `Name` = '$userCurr'");
     }
+    public function updateUserColor($color){
+        return mysqli_query($this->conn(), "UPDATE users SET Colors = '$color' WHERE Id_Person = ".mysqli_fetch_assoc($this->getUserByName($_SESSION['logado']))['Id_Person']);
+    }
+    public function updateUserCredit($id, $credit){
+        return mysqli_query($this->conn(), "UPDATE users SET Credits = $credit WHERE Id_Person = $id");
+    }
     public function deleteUser($user){
         return mysqli_query($this->conn(), "DELETE FROM `users` WHERE `Name` = '$user'");
     }

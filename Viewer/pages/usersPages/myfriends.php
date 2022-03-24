@@ -43,7 +43,7 @@ if(isset($_SESSION['message'])){
                             } else {
                                 if($fetch['Friend'] == true){
                                     echo "<table class='container-friend_profile'>
-                                    <tr><th><div class='friend-img'><img width='auto' height='100%' src='../Viewer/img/user.png' alt='#' title='".mysqli_fetch_assoc($users->getUserById($fetch['Id_Sender']))['Name']."' onclick='profile(".$fetch['Id_Receiver'].")'></div></th></tr>
+                                    <tr><th><div class='friend-img'><img width='auto' height='100%' src='../Viewer/img/user.png' alt='#' title='".mysqli_fetch_assoc($users->getUserById($fetch['Id_Receiver']))['Name']."' onclick='profile(".$fetch['Id_Receiver'].")'></div></th></tr>
                                     <tr><th>".mysqli_fetch_assoc($users->getUserById($fetch['Id_Receiver']))['Name']."</tr></th>
                                     </table>";
                                     $amigos = true;

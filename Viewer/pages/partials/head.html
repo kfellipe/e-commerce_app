@@ -18,11 +18,25 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
-    <?php if(!isset($_SESSION['logado'])){
-        echo "<style>
+    <?php 
+    if(!isset($_SESSION['logado'])){
+        echo "
+        <style>
         .container-dropdown:hover {
             border-radius: 0px;
             height: 130px;
         }
         </style>";
-    }?>
+    } else {
+        $nome = $_SESSION['logado'];
+        include_once $_SERVER['DOCUMENT_ROOT']."/Model/users.php";
+        $cur = $users->getUserByName($nome);
+        $fetch = mysqli_fetch_assoc($cur);
+        $colors = explode('/', $fetch['Colors']);
+        echo "<style>
+            body {
+            background: linear-gradient(to left, ".$colors[1].", ".$colors[0].");
+        }
+        </style>";
+    } 
+?>

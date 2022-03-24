@@ -2,7 +2,7 @@
 session_start();
 $_SESSION['site'] = "Meus Anuncios";
 $root = $_SERVER['DOCUMENT_ROOT'];
-include_once "$root/Model/users.php";
+
 include_once "$root/Model/products.php";
 include_once "$root/Controller/validateController.php";
 include_once "$root/Viewer/pages/partials/head.html";
@@ -22,7 +22,7 @@ if(isset($_SESSION['message'])){
     unset($_SESSION['message']);
 }
 
-include_once "$root/Viewer/pages/partials/headerLogado.html"; ?>
+include_once "$root/Viewer/pages/partials/header.php"; ?>
     <main>
         <section class="container-main_products">
 <?php

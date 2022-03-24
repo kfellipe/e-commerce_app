@@ -47,3 +47,16 @@
     font-style: italic;
     font-weight: bolder;
 }
+.btn {
+    margin-left: 25px;
+    width: 100px;
+    height: 25px;
+    transition: transform .5s;
+}
+.btn:hover {
+    transform: scale(1.2);
+}
+.container-buy {
+    margin-left: 25px;
+    height: 100px;
+}

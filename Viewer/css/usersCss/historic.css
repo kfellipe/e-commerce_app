@@ -1,0 +1,60 @@
+@charset "UTF-8";
+
+main {
+    width: 80vw;
+    height: 80vh;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5vh;
+    background: rgba(0, 0, 0, .1);
+    box-shadow: -2px 2px 10px rgba(0, 0, 0, .4);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    border: 1px solid rgba(0, 0, 0, .2);
+    border-radius: 10px;
+}
+table {
+    width: 45%;
+    height: 50px;
+    margin: 10px;
+    margin-bottom: 0px;
+    background: rgba(0, 0, 0, .05);
+    font-size: 10pt;
+    border: 1px solid rgba(0, 0, 0, .1);
+    border-radius: 10px;
+}
+td {
+    text-align: center;
+    border-top: 1px solid transparent;
+    border-image: linear-gradient(to left, rgba(0, 0, 0, 0), rgba(0, 0, 0, .4), rgba(0, 0, 0, 0));
+    border-image-slice: 1;
+}
+td, th {
+    height: 40px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+tr :last-child {
+    padding: 0px;
+}
+.download {
+    background: rgba(0, 0, 0, .1);
+    border: none;
+    border-radius: 0px;
+    width: 80px;
+    height: 100%;
+    font-size: 10pt;
+    border: 1px solid rgba(0, 0, 0, .05);
+    border-top: none;
+    transition: background .2s, color .2s, font .2s;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+.download:hover {
+    background: rgba(0, 0, 0, .15);
+    font-size: 14px;
+    
+}

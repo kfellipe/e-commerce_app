@@ -21,11 +21,17 @@ include_once "$root/Viewer/pages/partials/head.html";
         <form action="../../Controller/Router.php" method="POST">
             <section class="container-actions">
                 <input type="submit" class="btns-action" name="friends" value="Amigos"  style="cursor: pointer;">
-                <input type="submit" class="btns-action" name="history" value="Compras/Vendas"  style="cursor: pointer;">
+                <input type="submit" class="btns-action" name="historic" value="Compras/Vendas"  style="cursor: pointer;">
+                <input type="submit" class="btns-action" name="meus-anuncios" value="Meus Anuncios"  style="cursor: pointer;">
             </section>
         </form>
         <section class="container-crud_perfil">
             <table>
+                <tr>
+                    <th>
+                        <p>Creditos: R$ <?= mysqli_fetch_assoc($users->getUserByName($_SESSION['logado']))['Credits'] ?></p>
+                    </th>
+                </tr>
                 <tr>
                     <th>
                         <h1>Seja bem-vindo!</h1>
@@ -34,10 +40,12 @@ include_once "$root/Viewer/pages/partials/head.html";
                 <tr>
                     <th>
                         <form action="../../Controller/Router.php" method="POST">
+                            <p><input type="submit" value="Customizar Perfil" name="custom" class="btn"></p>
                             <p><input type="submit" value="Deletar Usuário" name="delete" class="btn"></p>
                             <p><input type="submit" value="Atualizar Dados" name="update" class="btn"></p>
                             <p><input type="submit" value="Logout" name="logout" class="btn">
                                <input type="submit" value="Home" name="home" class="btn"></p>
+                               <input type="hidden" name="id-user" value="<?= mysqli_fetch_assoc($users->getUserByName($_SESSION['logado']))['Id_Person'] ?>">
                         </form>
                     </th>
                 </tr>

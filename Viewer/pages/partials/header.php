@@ -6,8 +6,8 @@ if(isset($_SESSION['logado'])){
     <div class='container-logo'><h1><a href='../home'>Logo</a></h1></div>
     <div class='container-site' style='cursor: default;'><h1>".$_SESSION['site']."</h1></div>
     <div class='container-dropdown'>
-    <div class='menu' id='perfil'>".$_SESSION['logado']." 
-    <div class='arrow'> <img src='../../Viewer/img/rightArrow.png' width='15px' height='15px' alt='testando'> </div>
+    <div class='menu' id='perfil'><ul><li>".$_SESSION['logado']."</li><li><span style='font-size: 10pt'>R$ ".mysqli_fetch_assoc($users->getUserByName($_SESSION['logado']))['Credits']."</span></li></ul> 
+    
     </div>
         <form action='../Controller/Router.php' method='POST' class='container-form_dropdown'>
             <input type='submit' value='Perfil' name='meu-perfil' class='menu'>

@@ -13,12 +13,15 @@ RewriteRule ^/?(registrar-usuario)/?$ /Viewer/pages/usersPages/registrar.php [NC
 RewriteRule ^/?(login)/?$ /Viewer/pages/usersPages/login.php [NC]
 RewriteRule ^/?(perfil)/([0-9]+)/?$ /Viewer/pages/usersPages/perfil.php?id-user=$2 [NC]
 RewriteRule ^/?(meus-amigos)/?$ /Viewer/pages/usersPages/myfriends.php [NC]
+RewriteRule ^/?(transacoes)/?$ /Viewer/pages/usersPages/historic.php [NC]
+RewriteRule ^/?(customizar-perfil)/?$ /Viewer/pages/usersPages/custom.php [NC]
 
 RewriteRule ^/?(deletar-produto)/([0-9]+)/?$ /Viewer/pages/productsPages/delete.php?id-product=$2 [NC]
 RewriteRule ^/?(cadastrar-produto)/?$ /Viewer/pages/productsPages/create.php [NC]
 RewriteRule ^/?(meus-anuncios)/?$ /Viewer/pages/productsPages/myproducts.php [NC]
 RewriteRule ^/?(atualizar-produto)/([0-9]+)/?$ /Viewer/pages/productsPages/update.php?id-product=$2 [NC]
 RewriteRule ^/?(produto)/([0-9]+)/?$ /Viewer/pages/productsPages/product.php?id-product=$2 [NC]
+RewriteRule ^/?(comprar-produto)/([0-9]+)/?$ /Viewer/pages/productsPages/buy.php?id-product=$2 [NC]
 
 RewriteRule ^/?(teste)/?$ /Viewer/pages/teste.php [NC]
 RewriteRule ^/?(home)/?$ /Viewer/pages/home.php [NC]
