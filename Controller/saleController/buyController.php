@@ -3,7 +3,7 @@ session_start();
 include_once "$root/Model/sales.php";
 $quantity = $_SESSION['quantity'];
 $idProd = $_POST['id-product'];
-$idPerson = mysqli_fetch_assoc($users->getUserByName($_SESSION['logado']))['Id_Person'];
+$idPerson = mysqli_fetch_assoc($users->getUserByName($_COOKIE['logado']))['Id_Person'];
 $idOwner = mysqli_fetch_assoc($prod->getProdById($idProd))['Id_Owner'];
 if(mysqli_fetch_assoc($users->getUserById($idPerson))['Credits'] - (mysqli_fetch_assoc($prod->getProdById($idProd))['Price'] * $quantity) >= 0){
     if($quantity <= mysqli_fetch_assoc($prod->getProdById($idProd))['Quantity']){

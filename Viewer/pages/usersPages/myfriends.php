@@ -1,6 +1,5 @@
 <?php 
-session_start();
-$root = $_SERVER['DOCUMENT_ROOT'];
+
 $_SESSION['site'] = "Meus Amigos";
 
 include_once "$root/Model/friends.php";
@@ -26,8 +25,8 @@ if(isset($_SESSION['message'])){
             </div>
             <div class="content">
                 <?php 
-                    $idLogado = mysqli_fetch_assoc($users->getUserByName($_SESSION['logado']))['Id_Person'];
-                    $cur = $friends->getAllFriends(mysqli_fetch_assoc($users->getUserByName($_SESSION['logado']))['Id_Person']);
+                    $idLogado = mysqli_fetch_assoc($users->getUserByName($_COOKIE['logado']))['Id_Person'];
+                    $cur = $friends->getAllFriends(mysqli_fetch_assoc($users->getUserByName($_COOKIE['logado']))['Id_Person']);
                     $fetch = mysqli_fetch_assoc($cur);
                     $num = mysqli_num_rows($cur);
                     if($num > 0){

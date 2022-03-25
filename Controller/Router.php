@@ -1,18 +1,99 @@
 <?php
-
 session_start();
-$root = $_SERVER['DOCUMENT_ROOT'];
 
+$root = $_SERVER['DOCUMENT_ROOT'];
+$url = explode("/", $_GET['url']);
+
+if(isset($_POST['submit'])){
+    class sub {
+        public $root;
+        public $value;
+        public function __construct($value){
+            $this->root = $_SERVER['DOCUMENT_ROOT'];
+            $this->value = $value;
+        }
+        public function saleCont($cond, $cont){
+            if($this->value === $cond){
+                $root = $_SERVER['DOCUMENT_ROOT'];
+                require $this->root."/Controller/saleController/".$cont."Controller.php";
+            }
+        }
+        public function prodCont($cond, $cont){
+            if($this->value === $cond){
+                $root = $_SERVER['DOCUMENT_ROOT'];
+                require $this->root."/Controller/productsController/".$cont."Controller.php";
+            }
+        } 
+        public function friendCont($cond, $cont){
+            if($this->value === $cond){
+                $root = $_SERVER['DOCUMENT_ROOT'];
+                require $this->root."/Controller/friendsController/".$cont."Controller.php";
+            }
+        }
+        public function userCont($cond, $cont){
+            if($this->value === $cond){
+                $root = $_SERVER['DOCUMENT_ROOT'];
+                require $this->root."/Controller/usersController/".$cont."Controller.php";
+            }
+        }
+    }
+    $sub = new sub($_POST['submit']);
+    $sub->userCont("Logout", "login");
+    $sub->userCont("Logar", "login");
+    $sub->userCont("Registrar", "registrar");
+}
+
+echo $_GET['url'];
+
+class url {
+    public $root;
+    public $url;
+    public function __construct($url, $root){
+        $this->url = $url;
+        $this->root = $root;
+    }
+    public function user($dest, $page){
+        if($this->url[0] === $dest){
+            $root = $_SERVER['DOCUMENT_ROOT'];
+            $url = explode("/", $_GET['url']);
+            include $this->root."/Viewer/pages/usersPages/".$page;
+        }
+    }
+    public function prod($dest, $page){
+        if($this->url[0] === $dest){
+            $root = $_SERVER['DOCUMENT_ROOT'];
+            $url = explode("/", $_GET['url']);
+            include $this->root."/Viewer/pages/productsPages/".$page;
+        }
+    }
+}
+
+if($url[0] === "home"){
+    include "$root/Viewer/pages/home.php";
+}
+$url = new url($url, $root);
+
+$url->user("customizar-perfil", "custom.php");#####
+$url->user("deletar-usuario", "delete.php");#####
+$url->user("transacoes", "historic.php");#####
+$url->user("login", "login.php");
+$url->user("meus-amigos", "myfriends.php");######
+$url->user("meu-perfil", "myprofile.php");
+$url->user("perfil", "profile.php");
+$url->user("cadastrar-usuario", "registrar.php");
+$url->user("atualizar-usuarios", "update.php");######
+
+$url->prod("comprar-produto", "buy.php");
+$url->prod("cadastrar-produto", "create.php");
+$url->prod("meus-anuncios", "myproducts.php");
+$url->prod("produto", "product.php");
+$url->prod("atualizar-produto", "update.php");
+
+/*
 if (isset($_POST['login'])){
     $_SESSION['site'] = "Fazer LogIn";
     header("Location: ../login");
 }
-elseif (isset($_POST['home'])){
-    unset($_SESSION['query']);
-    unset($_SESSION['filter']);
-    $_SESSION['site'] = "Home";
-    header("Location: ../home");
-} 
 elseif (isset($_POST['register'])){
     $_SESSION['site'] = "Fazer Cadastro";
     header("Location: ../registrar-usuario");
@@ -95,4 +176,4 @@ elseif (isset($_POST['custom'])){
 }
 elseif (isset($_POST['custom-save'])){
     include_once "$root/Controller/usersController/customController.php";
-}
+}*/

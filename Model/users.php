@@ -9,7 +9,7 @@ class users extends conn {
         return mysqli_query($this->conn(), "SELECT * FROM users");
     }
     public function getUserByName($user){
-        return mysqli_query($this->conn(), "SELECT * FROM `users` WHERE `Name` = '$user'");
+        return mysqli_query($this->conn(), "SELECT * FROM users WHERE Name = '$user'");
     }
     public function getUserById($id){
         return mysqli_query($this->conn(), "SELECT * FROM users WHERE Id_Person = $id");
@@ -24,7 +24,10 @@ class users extends conn {
         return mysqli_query($this->conn(), "UPDATE `users` SET `Name` = '$userNew', `Password` = '$passNew' WHERE `Name` = '$userCurr'");
     }
     public function updateUserColor($color){
-        return mysqli_query($this->conn(), "UPDATE users SET Colors = '$color' WHERE Id_Person = ".mysqli_fetch_assoc($this->getUserByName($_SESSION['logado']))['Id_Person']);
+        return mysqli_query($this->conn(), "UPDATE users SET Colors = '$color' WHERE Id_Person = ".mysqli_fetch_assoc($this->getUserByName($_COOKIE['logado']))['Id_Person']);
+    }
+    public function updateUserLogged($id, $bool){
+        return mysqli_query($this->conn(), "UPDATE users SET Logged = $bool WHERE Id_Person = $id");
     }
     public function updateUserCredit($id, $credit){
         return mysqli_query($this->conn(), "UPDATE users SET Credits = $credit WHERE Id_Person = $id");

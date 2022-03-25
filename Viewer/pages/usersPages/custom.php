@@ -1,9 +1,8 @@
 <?php
-session_start();
-$root = $_SERVER['DOCUMENT_ROOT'];
+
 $_SESSION['site'] = "Customizar perfil";
 include_once "$root/Model/users.php";
-$fetch = mysqli_fetch_assoc($users->getUserByName($_SESSION['logado']))['Colors'];
+$fetch = mysqli_fetch_assoc($users->getUserByName($_COOKIE['logado']))['Colors'];
 $colors = explode('/', $fetch);
 
 include_once "$root/Controller/validateController.php";

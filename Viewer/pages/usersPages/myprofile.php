@@ -1,6 +1,5 @@
 <?php
-session_start();
-$root = $_SERVER['DOCUMENT_ROOT'];
+
 $_SESSION['site'] = "Meu Perfil";
 
 include_once "$root/Model/friends.php";
@@ -29,7 +28,7 @@ include_once "$root/Viewer/pages/partials/head.html";
             <table>
                 <tr>
                     <th>
-                        <p>Creditos: R$ <?= mysqli_fetch_assoc($users->getUserByName($_SESSION['logado']))['Credits'] ?></p>
+                        <p>Creditos: R$ <?= mysqli_fetch_assoc($users->getUserByName($_COOKIE['logado']))['Credits'] ?></p>
                     </th>
                 </tr>
                 <tr>
@@ -45,7 +44,7 @@ include_once "$root/Viewer/pages/partials/head.html";
                             <p><input type="submit" value="Atualizar Dados" name="update" class="btn"></p>
                             <p><input type="submit" value="Logout" name="logout" class="btn">
                                <input type="submit" value="Home" name="home" class="btn"></p>
-                               <input type="hidden" name="id-user" value="<?= mysqli_fetch_assoc($users->getUserByName($_SESSION['logado']))['Id_Person'] ?>">
+                               <input type="hidden" name="id-user" value="<?= mysqli_fetch_assoc($users->getUserByName($_COOKIE['logado']))['Id_Person'] ?>">
                         </form>
                     </th>
                 </tr>

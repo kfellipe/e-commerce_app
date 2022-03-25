@@ -1,10 +1,8 @@
 <?php
-session_start();
-$root = $_SERVER['DOCUMENT_ROOT'];
 
 include_once "$root/Model/products.php";
-$_SESSION['site'] = mysqli_fetch_assoc($prod->getProdById($_GET['id-product']))['Name'];
-$Id = $_GET['id-product'];
+$_SESSION['site'] = mysqli_fetch_assoc($prod->getProdById($url[1]))['Name'];
+$Id = $url[1];
 $num = mysqli_num_rows($prod->getProdById($Id));
 if($num <= 0){
     $_SESSION['message'] = "Produto não encontrado";

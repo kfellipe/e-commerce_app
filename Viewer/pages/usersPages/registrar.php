@@ -1,5 +1,4 @@
 <?php
-$root = $_SERVER['DOCUMENT_ROOT'];
 include_once "$root/Viewer/pages/partials/head.html";
 ?>
 <link rel="stylesheet" href="../Viewer/css/usersCss/registrar.css">
@@ -26,8 +25,8 @@ include_once "$root/Viewer/pages/partials/head.html";
             <tr>
                 <th colspan="2">
                     <div class="btns">
-                        <input type="submit" value="Registrar" name="sub-register" class="btn">
-                        <input type="submit" value="Logar" name="login" class="btn">
+                        <input type="submit" value="Registrar" name="submit" class="btn">
+                        <input type="submit" value="Logar" name="submit" class="btn">
                     </div>
                 </th>
             </tr>

@@ -1,4 +1,4 @@
 
-function deleteProduct(id){
-    location.href = "../deletar-produto/"+id;
+function header(url){
+    location.href = "../../"+url;
 }

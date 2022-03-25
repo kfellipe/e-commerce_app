@@ -1,8 +1,7 @@
 <?php 
-session_start();
-$root = $_SERVER['DOCUMENT_ROOT'];
+
 include_once "$root/Model/sales.php";
-$fetch = mysqli_fetch_assoc($prod->getProdById($_GET['id-product']));
+$fetch = mysqli_fetch_assoc($prod->getProdById($url[1]));
 if($fetch['Id_Owner'] == mysqli_fetch_assoc($users->getUserByName($_SESSION['logado']))['Id_Person'] || !isset($_SESSION['logado'])){
     header("Location: ../../");
 }

@@ -1,11 +1,11 @@
 <?php 
-session_start();
+
 $_SESSION['site'] = "Meus Anuncios";
-$root = $_SERVER['DOCUMENT_ROOT'];
 
 include_once "$root/Model/products.php";
 include_once "$root/Controller/validateController.php";
 include_once "$root/Viewer/pages/partials/head.html";
+
 $cur = $prod->getProdByOwner(mysqli_fetch_assoc($users->getUserByName($_SESSION['logado']))['Id_Person']);
 $fetch = mysqli_fetch_assoc($cur);
 $num = mysqli_num_rows($cur);

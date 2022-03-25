@@ -18,8 +18,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <script src="../Viewer/js/location.js"></script>
     <?php 
-    if(!isset($_SESSION['logado'])){
+    if(!isset($_COOKIE['logado'])){
         echo "
         <style>
         .container-dropdown:hover {
@@ -28,7 +29,7 @@
         }
         </style>";
     } else {
-        $nome = $_SESSION['logado'];
+        $nome = $_COOKIE['logado'];
         include_once $_SERVER['DOCUMENT_ROOT']."/Model/users.php";
         $cur = $users->getUserByName($nome);
         $fetch = mysqli_fetch_assoc($cur);

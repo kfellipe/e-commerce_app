@@ -1,12 +1,11 @@
 <?php 
-session_start();
-$root = $_SERVER['DOCUMENT_ROOT'];
+
 include_once "$root/Model/products.php";
 include_once "$root/Model/friends.php";
-$fetch = mysqli_fetch_array($prod->getUserById($_GET['id-user']));
+$fetch = mysqli_fetch_array($prod->getUserById($url[1]));
 $_SESSION['site'] = "Perfil de ".$fetch['Name'];
-if(isset($_SESSION['logado'])){
-    if(mysqli_fetch_assoc($users->getUserByName($_SESSION['logado']))['Id_Person'] == $_GET['id-user']){
+if(isset($_COOKIE['logado'])){
+    if(mysqli_fetch_assoc($users->getUserByName($_COOKIE['logado']))['Id_Person'] == $url[1]){
         header("Location: ../meu-perfil");
     }
 }
@@ -31,20 +30,20 @@ include_once "$root/Viewer/pages/partials/head.html";
         <section class="container-actions">
             <form action="../../Controller/Router.php" method="POST">
                 <?php 
-                {
-                $idLogado = mysqli_fetch_assoc($users->getUserByName($_SESSION['logado']))['Id_Person'];
-                $idUser = $_GET['id-user'];
-                $cur = $friends->getCheckFriend($idUser, $idLogado);
-                $fetch = mysqli_fetch_assoc($cur);
-                $num = mysqli_num_rows($cur);
-                if($num > 0){
-                    echo "<input type='hidden' id='id-requested' name='id-user' value='".$_GET['id-user']."'>
-                    <input type='submit' class='btn' name='delete-friend' value='Desfazer amizade'>";
-                } else {
-                    echo "<input type='hidden' id='id-requested' name='id-user' value='".$_GET['id-user']."'>
-                    <input type='submit' class='btn' name='sent-friend-request' value='Enviar solicitação'>";
+                if(isset($_COOKIE['logado'])){
+                    $idLogado = mysqli_fetch_assoc($users->getUserByName($_COOKIE['logado']))['Id_Person'];
+                    $idUser = $url[1];
+                    $cur = $friends->getCheckFriend($idUser, $idLogado);
+                    $fetch = mysqli_fetch_assoc($cur);
+                    $num = mysqli_num_rows($cur);
+                    if($num > 0){
+                        echo "<input type='hidden' id='id-requested' name='id-user' value='".$url[1]."'>
+                        <input type='submit' class='btn' name='delete-friend' value='Desfazer amizade'>";
+                    } else {
+                        echo "<input type='hidden' id='id-requested' name='id-user' value='".$url[1]."'>
+                        <input type='submit' class='btn' name='sent-friend-request' value='Enviar solicitação'>";
                 }
-            }$fetch = mysqli_fetch_array($prod->getUserById($_GET['id-user']));
+            }$fetch = mysqli_fetch_array($prod->getUserById($url[1]));
                 ?>
                 
             </form>

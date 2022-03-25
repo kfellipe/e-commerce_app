@@ -5,6 +5,7 @@ CREATE TABLE users (
     Id_Person int(255) NOT NULL AUTO_INCREMENT,
     Colors varchar(255) NOT NULL DEFAUL '#15dfee/#008dc5',
     Credits float NOT NULL DEFAULT 0,
+    Logged boolean NOT NULL,
     PRIMARY KEY (Id_Person)
 );
 CREATE TABLE products (

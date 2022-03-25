@@ -1,6 +1,4 @@
 <?php
-session_start();
-$root = $_SERVER['DOCUMENT_ROOT'];
 
 include_once "$root/Model/sales.php";
 include_once "$root/Controller/validateController.php";
@@ -15,7 +13,7 @@ include_once "$root/Viewer/pages/partials/head.html";
     ?>
     <main>
         <?php
-        $idLogado = mysqli_fetch_assoc($users->getUserByName($_SESSION['logado']))['Id_Person'];
+        $idLogado = mysqli_fetch_assoc($users->getUserByName($_COOKIE['logado']))['Id_Person'];
         $cur = $sales->getSaleByMember($idLogado);
         $num = mysqli_num_rows($cur);
         $fetch = mysqli_fetch_assoc($cur);

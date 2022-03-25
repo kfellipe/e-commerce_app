@@ -4,7 +4,7 @@ include_once "users.php";
 
 class prod extends users {
     public function postProduct($name, $price, $quantity, $img){
-        return mysqli_query($this->conn(), "INSERT INTO products(Name, Price, Quantity, Id_Owner, Img_Product) VALUES('$name', '$price', '$quantity', ".mysqli_fetch_array($this->getUserByName($_SESSION['logado']))['Id_Person'].", '$img')");
+        return mysqli_query($this->conn(), "INSERT INTO products(Name, Price, Quantity, Id_Owner, Img_Product) VALUES('$name', '$price', '$quantity', ".mysqli_fetch_array($this->getUserByName($_COOKIE['logado']))['Id_Person'].", '$img')");
     }
     public function getProdAll(){
         return mysqli_query($this->conn(), "SELECT * FROM products");

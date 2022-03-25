@@ -113,6 +113,6 @@ $dompdf->loadHtml("
 $dompdf->setPaper('A4', 'landscape');
 
 $dompdf->render();
-$nomepdf = "nota-fiscal-".$nomeComprador."-".$fetch['Name_Product']."-".uniqid()."-.pdf";
+$nomepdf = "nota-fiscal-".$nomeComprador."-".$fetch['Name_Product']."-".uniqid().".pdf";
 $dompdf->stream($nomepdf, array("Attachment" => true));
 ?>

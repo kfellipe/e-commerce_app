@@ -1,10 +1,9 @@
 <?php 
-session_start();
-$root = $_SERVER['DOCUMENT_ROOT'];
+
 include_once "$root/Controller/validateController.php";
 include_once "$root/Model/products.php";
 $_SESSION['site'] = "Atualizar Produto";
-$id = $_GET['id-product'];
+$id = $url[1];
 $_SESSION['id-produto'] = $id;
 $cur = mysqli_fetch_array($prod->getProdById($id));
 if(mysqli_num_rows($prod->getProdById($id)) <= 0){

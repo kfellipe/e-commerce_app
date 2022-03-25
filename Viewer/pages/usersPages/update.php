@@ -1,6 +1,5 @@
 <?php 
-session_start();
-$root = $_SERVER['DOCUMENT_ROOT'];
+
 include_once "$root/Viewer/pages/partials/head.html";
 include_once "$root/Controller/validateController.php";
 
@@ -12,7 +11,7 @@ include_once "$root/Controller/validateController.php";
         <table>
             <tr>
                 <th colspan="2">
-                    <input type="text" placeholder="<?php echo $_SESSION['logado']; ?>" name="user" id="user">
+                    <input type="text" placeholder="<?php echo $_COOKIE['logado']; ?>" name="user" id="user">
                 </th>
             </tr>
             <tr>

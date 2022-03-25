@@ -1,7 +1,5 @@
 <?php 
-session_start();
 $_SESSION['site'] = "Home";
-$root = $_SERVER['DOCUMENT_ROOT'];
 
 include_once "$root/Model/products.php";
 include_once "$root/Model/users.php";
@@ -11,7 +9,9 @@ include_once "$root/Viewer/pages/partials/head.html";
 <link rel="stylesheet" href="Viewer/css/productsCss/home.css">
 </head>
 <body>
-    <?php include_once "$root/Viewer/pages/partials/header.php";
+    <?php 
+    echo $_COOKIE['logado'];
+    include_once "$root/Viewer/pages/partials/header.php";
     if(isset($_SESSION['message'])){
             $message = $_SESSION['message'];
             echo "<div class='popup'>$message</div>";
@@ -47,7 +47,11 @@ include_once "$root/Viewer/pages/partials/head.html";
             } else {
                 if($num > 0){
                     do {
-                        echo "<div class='container-products' onclick='product(".$fetch['Id_Product'].")'>
+                        echo "
+                        <script>
+                        let produto = 'produto/".$fetch['Id_Product']."';
+                        </script>
+                        <div class='container-products' onclick='header(produto)'>
                         <div class='img-produto'><img src='".$fetch['Img_Product']."'></div>
                         <table class='container-product-infos'>
                         <tr><th>". $fetch['Name'] ."</th></tr>
@@ -68,11 +72,15 @@ include_once "$root/Viewer/pages/partials/head.html";
                     $num = mysqli_num_rows($cur);
                     $fetch = mysqli_fetch_assoc($cur);
                     if($num > 0){
-                        if(isset($_SESSION['logado'])){
+                        if(isset($_COOKIE['logado'])){
                             do {                
-                                if($fetch['Id_Person'] != mysqli_fetch_assoc($users->getUserByName($_SESSION['logado']))['Id_Person']){
+                                if($fetch['Id_Person'] != mysqli_fetch_assoc($users->getUserByName($_COOKIE['logado']))['Id_Person']){
                                     $anuncios = mysqli_num_rows($prod->getProdByOwner($fetch['Id_Person']));
-                                    echo "<div class='container-products' onclick='perfil(".$fetch['Id_Person'].")'>
+                                    echo "
+                                    <script>
+                                    let perfil".$fetch['Id_Person']." = 'perfil".$fetch['Id_Person']."/".$fetch['Id_Person']."';
+                                    </script>
+                                    <div class='container-products' onclick='header(perfil)'>
                                     <div class='img-produto'><img src='https://img.icons8.com/ios-glyphs/30/000000/user--v1.png'></div>
                                     <table class='container-product-infos'>
                                     <tr><th>". $fetch['Name'] ."</th></tr>
@@ -84,7 +92,12 @@ include_once "$root/Viewer/pages/partials/head.html";
                         } else {
                             do {                
                                 $anuncios = mysqli_num_rows($prod->getProdByOwner($fetch['Id_Person']));
-                                echo "<div class='container-products' onclick='perfil(".$fetch['Id_Person'].")'>
+                                echo "
+                                <script>
+                                let perfil".$fetch['Id_Person']." = 'perfil".$fetch['Id_Person']."/".$fetch['Id_Person']."';
+                                console.log(perfil);
+                                </script>
+                                <div class='container-products' onclick='header(perfil".$fetch['Id_Person'].")'>
                                 <div class='img-produto'><img src='https://img.icons8.com/ios-glyphs/30/000000/user--v1.png'></div>
                                 <table class='container-product-infos'>
                                 <tr><th>". $fetch['Name'] ."</th></tr>
@@ -98,13 +111,5 @@ include_once "$root/Viewer/pages/partials/head.html";
             ?>
         </section>
     </main>
-    <script>
-        function product(x){
-            location.href = "../produto/"+x;
-        }
-        function perfil(x){
-            location.href = "../perfil/"+x;
-        }
-    </script>
 </body>
 </html>
