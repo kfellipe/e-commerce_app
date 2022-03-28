@@ -58,3 +58,19 @@ th {
     width: 15px;
     height: 15px;
 }
+label {
+    user-select: none;
+    color: black;
+    font-size: 10pt;
+    transition: font .1s, color .05s;
+}
+label:hover {
+    font-size: 11pt;
+}
+.check:checked ~ label{
+    font-size: 11pt;
+    text-decoration: underline;
+}
+input[type=checkbox]{
+    display: none;
+}

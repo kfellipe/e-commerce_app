@@ -7,7 +7,7 @@ include_once "$root/Viewer/pages/partials/head.html";
 <link rel="stylesheet" href="../Viewer/css/productsCss/create.css">
 </head>
 <body>
-<?php include_once "$root/Viewer/pages/partials/headerLogado.html"; ?>
+<?php include_once "$root/Viewer/pages/partials/header.php"; ?>
     <main>
         <form action="../Controller/Router.php" enctype="multipart/form-data" method="POST">
             <table>
@@ -17,8 +17,8 @@ include_once "$root/Viewer/pages/partials/head.html";
                 <tr><th> 
                 <label for="selecionar-arquivo" class="btn">Selecione uma foto</label>    
                 <input type="file" accept="image/jpg, image/png, image/jpeg" id="selecionar-arquivo" name="arquivo"> </th></tr>
-                <tr><th> <input type="submit" name="sub-create-product" value="Cadastrar" class="btn">
-                <input name="meus-anuncios" type="submit" value="Meus Anuncios" class="btn"></th></tr>
+                <tr><th> <input type="submit" name="submit" value="Cadastrar" class="btn">
+                <button type="button" class="btn" name="meus-anuncios" onclick="header('meus-anuncios')">Meus Anuncios</button></th></tr>
             </table>
         </form>
     </main>

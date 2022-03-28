@@ -26,10 +26,10 @@ include_once "$root/Controller/validateController.php";
             </tr>
             <tr>
                 <th>
-                    <input type="submit" value="Atualizar Dados" name="sub-update" class="btn">
+                    <input type="submit" value="Atualizar dados" name="submit" class="btn">
                 </th>
                 <th>
-                    <input type="submit" value="Voltar" name="perfil" class="btn">
+                    <button type="button" class="btn" name="meu-perfil" onclick="header('meu-perfil')">Meu Perfil</button>
                 </th>
             </tr>
         </table>

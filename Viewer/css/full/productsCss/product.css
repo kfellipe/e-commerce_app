@@ -9,10 +9,9 @@
 .container-img {
     display: flex;
     align-items: center;
-    width: 30%;
+    width: calc(75% - 20px);
     height: 70vh;
-    margin-left: 10%;
-    padding-right: 10%;
+    margin: 2vw;
 }
 .img-product {
     width: 100%;

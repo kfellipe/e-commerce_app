@@ -84,7 +84,7 @@ if(isset($_SESSION['message'])){
                             </th></tr>
                             <tr><th>".mysqli_fetch_assoc($users->getUserById($fetch['Id_Receiver']))['Name']."</th></tr>
                             <tr><th>
-                                <input type='submit' name='cancel-friend-request' class='btns-action' value='Cancelar'>
+                                <input type='submit' name='submit' class='btns-action' value='Cancelar'>
                             </th></tr>
                             <input type='hidden' name='id-user' value='".$fetch['Id_Receiver']."'>
                         </table>
@@ -107,7 +107,7 @@ if(isset($_SESSION['message'])){
                         $num = mysqli_num_rows($cur);
                         if($num > 0){
                             do {
-                                echo "<form action='../Controller/friendsController/requestController.php' method='POST'>
+                                echo "<form action='../Controller/Router.php' method='POST'>
                                 <table class='container-friend_profile'>
                                 <tr><th>
                                     <div class='friend-img' style='width: 75px; height: 50px;' title='".mysqli_fetch_assoc($users->getUserById($fetch['Id_Sender']))['Name']."'> 
@@ -115,10 +115,10 @@ if(isset($_SESSION['message'])){
                                     </div>
                                 </th></tr>
                                 <tr><th>
-                                    <input type='submit' name='accept-friend-request' class='btns-action' value='Aceitar'>
+                                    <input type='submit' value='Aceitar' name='submit' class='btns-action'>
                                 </th></tr>
                                 <tr><th>
-                                    <input type='submit' class='btns-action' name='reject-friend-request' value='Recusar'>
+                                    <input type='submit' value='Recusar' class='btns-action' name='submit'>
                                 </th></tr>
                                 <input type='hidden' id='id-user' name='id-user' value='".$fetch['Id_Sender']."'>
                             </table>

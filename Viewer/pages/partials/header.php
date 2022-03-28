@@ -3,9 +3,9 @@
 if(isset($_COOKIE['logado'])){
     echo "
     <script>
-    let meu_perfil = 'meu-perfil';
-    let home = 'home';
-    let meus_anuncios = 'meus-anuncios';
+    let meuperfil = 'meu-perfil';
+    let Home = 'home';
+    let meusanuncios = 'meus-anuncios';
     </script>
     <header>
     <div class='container-logo'><h1><a href='../home'>Logo</a></h1></div>
@@ -15,9 +15,8 @@ if(isset($_COOKIE['logado'])){
     
     </div>
         <form action='../Controller/Router.php' method='POST' class='container-form_dropdown'>
-            <input type='submit' onclick='header(meu_perfil)' value='Perfil' name='meu-perfil' class='menu'>
-            <button type='button' onclick='header(home)' name='home' class='menu'>Home</button>
-            <button type='butotn' onclick='header(meus_anuncios)' name='meus-anuncios' class='menu'>Meus Anuncios</button>
+            <button type='button' onclick='header(meuperfil)' name='meu-perfil' class='menu'>Perfil</button>
+            <button type='button' onclick='header(Home)' name='home' class='menu'>Home</button>
             <input type='submit' value='Logout' name='submit' class='menu'>
         </form>
     </div>

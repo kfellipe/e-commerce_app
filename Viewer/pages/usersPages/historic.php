@@ -1,8 +1,10 @@
 <?php
-
 include_once "$root/Model/sales.php";
 include_once "$root/Controller/validateController.php";
 include_once "$root/Viewer/pages/partials/head.html";
+
+$_SESSION['site'] = "Comprovantes";
+
 ?>
 <link rel="stylesheet" href="../Viewer/css/usersCss/historic.css">
 </head>
@@ -35,9 +37,9 @@ include_once "$root/Viewer/pages/partials/head.html";
                     <td>".$fetch['Quantity']."</td>
                     <td>".$fetch['Price']."</td>
                     <td>".$fetch['Name_Product']."</td>
-                    <form action='../../Controller/Router.php' method='POST'>
+                    <form action='../../Controller/saleController/downloadPdfController.php' method='POST'>
                     <input type='hidden' name='id-sale' value='".$fetch['Id_Sale']."'>
-                    <td><input type='submit' name='download-pdf' value='Download' class='download'></td></form>
+                    <td><input type='submit' name='download' value='Download' class='download'></td></form>
                 </tr>
                 </tbody>
             </table>";

@@ -45,6 +45,7 @@ main {
     height: 100%;
     border-radius: 0px;
     transition: background .3s;
+    width: 100%;
 }
 .container-actions :first-child{
     border-bottom: 1px solid transparent;

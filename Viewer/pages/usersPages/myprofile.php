@@ -19,9 +19,9 @@ include_once "$root/Viewer/pages/partials/head.html";
     <main>
         <form action="../../Controller/Router.php" method="POST">
             <section class="container-actions">
-                <input type="submit" class="btns-action" name="friends" value="Amigos"  style="cursor: pointer;">
-                <input type="submit" class="btns-action" name="historic" value="Compras/Vendas"  style="cursor: pointer;">
-                <input type="submit" class="btns-action" name="meus-anuncios" value="Meus Anuncios"  style="cursor: pointer;">
+                <button type="button" class="btns-action" name="friends" onclick="header('meus-amigos')">Meus Amigos</button>
+                <button type="button" class="btns-action" name="historic" onclick="header('transacoes')">Compras/Vendas</button>
+                <button type="button" class="btns-action" name="myproducts" onclick="header('meus-anuncios')">Meus Anuncios</button>
             </section>
         </form>
         <section class="container-crud_perfil">
@@ -39,11 +39,11 @@ include_once "$root/Viewer/pages/partials/head.html";
                 <tr>
                     <th>
                         <form action="../../Controller/Router.php" method="POST">
-                            <p><input type="submit" value="Customizar Perfil" name="custom" class="btn"></p>
-                            <p><input type="submit" value="Deletar Usuário" name="delete" class="btn"></p>
-                            <p><input type="submit" value="Atualizar Dados" name="update" class="btn"></p>
-                            <p><input type="submit" value="Logout" name="logout" class="btn">
-                               <input type="submit" value="Home" name="home" class="btn"></p>
+                            <p><button type="button" class="btn" name="custom" onclick="header('customizar-perfil')">Customizar</button></p>
+                            <p><button type="button" class="btn" name="delete" onclick="header('deletar-usuario')">Deletar Usuário</button></p>
+                            <p><button type="button" class="btn" name="update" onclick="header('atualizar-usuario')">Atualizar Usuário</button></p>
+                            <p><input type="submit" value="Logout" name="submit" class="btn">
+                               <button type="button" class="btn" name="home" onclick="header('home')">Home</button></p>
                                <input type="hidden" name="id-user" value="<?= mysqli_fetch_assoc($users->getUserByName($_COOKIE['logado']))['Id_Person'] ?>">
                         </form>
                     </th>

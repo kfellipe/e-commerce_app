@@ -12,7 +12,7 @@ include_once "$root/Viewer/pages/partials/head.html";
 
 
 ?>
-<link rel="stylesheet" href="../Viewer/css/productsCss/product.css">
+<link rel="stylesheet" href="../Viewer/css/responsive/productsCss/product.css">
 </head>
 <body>
 <?php 
@@ -31,23 +31,25 @@ if(isset($_SESSION['message'])){
             <img class="img-product" src="<?= $fetch['Img_Product']; ?>" alt="">
         </section>
         <section class="container-info">
-            <div class="container-info_title">
-                <h2><?= $fetch['Name']; ?></h2>
-            </div>
-            <div class="container-info_price">
-                <p><strong>R$ <?= $fetch['Price']; ?></strong></p>
-            </div>
-            <div class="container-info_quantity">
-                <p>em estoque: <?= $fetch['Quantity']; ?></p>
-            </div>
-            <div class="container-info_announcer">
-                <h3><a href="../perfil/<?= $fetch['Id_Owner'] ?>"><?= mysqli_fetch_assoc($users->getUserById($fetch['Id_Owner']))['Name'] ?></a></h3>
-            </div>
+            <section>
+                <div class="container-info_title">
+                    <h2><?= $fetch['Name']; ?></h2>
+                </div>
+                <div class="container-info_price">
+                    <p><strong>R$ <?= $fetch['Price']; ?></strong></p>
+                </div>
+                <div class="container-info_quantity">
+                    <p>em estoque: <?= $fetch['Quantity']; ?></p>
+                </div>
+                <div class="container-info_announcer">
+                    <h3><a href="../perfil/<?= $fetch['Id_Owner'] ?>"><?= mysqli_fetch_assoc($users->getUserById($fetch['Id_Owner']))['Name'] ?></a></h3>
+                </div>
+            </section>
             <form action="../../Controller/Router.php" method="POST">
                 <div class="container-buy">
                     <?php 
-                    if(isset($_SESSION['logado'])){
-                        $idLogado = mysqli_fetch_assoc($users->getUserByName($_SESSION['logado']))['Id_Person'];
+                    if(isset($_COOKIE['logado'])){
+                        $idLogado = mysqli_fetch_assoc($users->getUserByName($_COOKIE['logado']))['Id_Person'];
                         if($fetch['Id_Owner'] == $idLogado){
                             echo "<input type='submit' value='Editar' name='update-product' class='btn'>
                             <input type='hidden' name='id-produto' value='".$fetch['Id_Product']."'";
@@ -66,6 +68,5 @@ if(isset($_SESSION['message'])){
         </section>
     </section>
 </main>
-
 </body>
 </html>

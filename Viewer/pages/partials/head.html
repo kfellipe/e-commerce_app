@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $_SESSION['site']; ?></title>
     <link rel="shortcut icon" href="https://img.icons8.com/ios-glyphs/30/000000/user--v1.png" type="image/x-icon">
-    <link rel="stylesheet" href="../Viewer/css/default.css">
+    <link rel="stylesheet" href="../Viewer/css/responsive/default.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
@@ -33,7 +33,7 @@
         include_once $_SERVER['DOCUMENT_ROOT']."/Model/users.php";
         $cur = $users->getUserByName($nome);
         $fetch = mysqli_fetch_assoc($cur);
-        $colors = explode('/', $fetch['Colors']);
+        $colors = explode('/', $fetch['Back_Colors']);
         echo "<style>
             body {
             background: linear-gradient(to left, ".$colors[1].", ".$colors[0].");

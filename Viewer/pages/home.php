@@ -4,19 +4,22 @@ $_SESSION['site'] = "Home";
 include_once "$root/Model/products.php";
 include_once "$root/Model/users.php";
 include_once "$root/Viewer/pages/partials/head.html";
-
 ?>
-<link rel="stylesheet" href="Viewer/css/productsCss/home.css">
+<link rel="stylesheet" href="/Viewer/css/responsive/home.css">
+</style>
 </head>
 <body>
     <?php 
-    echo $_COOKIE['logado'];
     include_once "$root/Viewer/pages/partials/header.php";
     if(isset($_SESSION['message'])){
             $message = $_SESSION['message'];
             echo "<div class='popup'>$message</div>";
             unset($_SESSION['message']);
         }
+        echo "<script>
+        let produto;
+        let perfil;
+        </script>"
     ?>
     <main>
         <ul></ul>
@@ -49,9 +52,9 @@ include_once "$root/Viewer/pages/partials/head.html";
                     do {
                         echo "
                         <script>
-                        let produto = 'produto/".$fetch['Id_Product']."';
+                        let produto".$fetch['Id_Product']." = 'produto/".$fetch['Id_Product']."';
                         </script>
-                        <div class='container-products' onclick='header(produto)'>
+                        <div class='container-products' onclick='header(produto".$fetch['Id_Product'].")'>
                         <div class='img-produto'><img src='".$fetch['Img_Product']."'></div>
                         <table class='container-product-infos'>
                         <tr><th>". $fetch['Name'] ."</th></tr>
@@ -76,12 +79,14 @@ include_once "$root/Viewer/pages/partials/head.html";
                             do {                
                                 if($fetch['Id_Person'] != mysqli_fetch_assoc($users->getUserByName($_COOKIE['logado']))['Id_Person']){
                                     $anuncios = mysqli_num_rows($prod->getProdByOwner($fetch['Id_Person']));
+                                    $letter = str_split($fetch['Name']);
+                                    $letter = strtoupper($letter[0]);
                                     echo "
                                     <script>
-                                    let perfil".$fetch['Id_Person']." = 'perfil".$fetch['Id_Person']."/".$fetch['Id_Person']."';
+                                    let perfil".$fetch['Id_Person']." = 'perfil/".$fetch['Id_Person']."';
                                     </script>
-                                    <div class='container-products' onclick='header(perfil)'>
-                                    <div class='img-produto'><img src='https://img.icons8.com/ios-glyphs/30/000000/user--v1.png'></div>
+                                    <div class='container-products' onclick='header(perfil".$fetch['Id_Person'].")'>
+                                    <div class='img-profile' style='background-image: radial-gradient(".$fetch['Pred_Color']." 30%, rgba(0, 0, 0, 0)70%);'>".$letter."</div>
                                     <table class='container-product-infos'>
                                     <tr><th>". $fetch['Name'] ."</th></tr>
                                     <tr><th>Anuncios: $anuncios</th></tr>
@@ -92,13 +97,14 @@ include_once "$root/Viewer/pages/partials/head.html";
                         } else {
                             do {                
                                 $anuncios = mysqli_num_rows($prod->getProdByOwner($fetch['Id_Person']));
+                                $letter = str_split($fetch['Name']);
+                                $letter = strtoupper($letter[0]);
                                 echo "
                                 <script>
-                                let perfil".$fetch['Id_Person']." = 'perfil".$fetch['Id_Person']."/".$fetch['Id_Person']."';
-                                console.log(perfil);
+                                let perfil".$fetch['Id_Person']." = 'perfil/".$fetch['Id_Person']."';
                                 </script>
                                 <div class='container-products' onclick='header(perfil".$fetch['Id_Person'].")'>
-                                <div class='img-produto'><img src='https://img.icons8.com/ios-glyphs/30/000000/user--v1.png'></div>
+                                <div class='img-profile' style='background-image: radial-gradient(".$fetch['Pred_Color']." 30%, rgba(0, 0, 0, 0)70%);'>".$letter."</div>
                                 <table class='container-product-infos'>
                                 <tr><th>". $fetch['Name'] ."</th></tr>
                                 <tr><th>Anuncios: $anuncios</th></tr>

@@ -1,4 +1,6 @@
 <?php
+$root = $_SERVER['DOCUMENT_ROOT'];
+
 require "$root/vendor/autoload.php";
 include_once "$root/Model/sales.php";
 use Dompdf\Dompdf;

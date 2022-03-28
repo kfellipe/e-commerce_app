@@ -4,15 +4,16 @@ main {
     margin-right: auto;
     margin-left: auto;
     margin-top: 10px;
+    margin-bottom: 20px;
     width: 95vw;
-    height: 85vh;
+    height: auto;
     border: 1px solid rgba(0, 0, 0, .4);
     border-radius: 10px;
     box-shadow: -2px 2px 10px rgba(0, 0, 0, .5);
     background: rgba(0, 0, 0, .1);
     display: flex;
     flex-direction: column;
-    align-items: space-around;
+    align-items: space-evenly;
 }
 .container-main_products {
     display: flex;
@@ -22,6 +23,7 @@ main {
     border-bottom: 1px solid transparent;
     border-image: linear-gradient(to left, rgba(0, 0, 0, 0), rgba(0, 0, 0, .7), rgba(0, 0, 0, 0));
     border-image-slice: 1;
+    justify-content: space-evenly;
 }
 .container-main_users {
     border-top: 1px solid transparent;
@@ -30,12 +32,14 @@ main {
     height: 100%;
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
 }
 .container-products {
     background: rgba(0, 0, 0, .1);
     border-radius: 10px;
     border: 1px solid rgba(0, 0, 0, .2);
-    margin-left: 20px;
+    margin: 20px;
     width: 150px;
     height: 200px;
     transition: background .3s, border .3s;
@@ -58,6 +62,19 @@ main {
     justify-content: center;
     align-items: center;
     overflow: hidden;
+}
+.img-profile {
+    width: 115px;
+    height: 115px;
+    border-top: none;
+    /*border: 2px solid black;*/
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    font-size: 45pt;
+    background-image: radial-gradient(#a5becc 30%, rgba(0, 0, 0, 0)70%);
 }
 .img-produto > img {
     width: 100%;
@@ -97,4 +114,17 @@ table {
     font-style: italic;
     font-weight: bolder;
     margin-left: 5vw;
+}
+input[type=search]{
+    background: none;
+    border: none;
+    border-radius: 0px;
+    border-bottom: 1px solid transparent;
+    border-image: linear-gradient(to left, rgba(0, 0, 0, 0), black, rgba(0, 0, 0, 0));
+    border-image-slice: 1;
+    text-align: center;
+}
+::-webkit-input-placeholder {
+    color: rgba(0, 0, 0, .6);
+    padding-left: center;
 }

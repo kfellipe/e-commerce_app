@@ -40,7 +40,7 @@ if($_POST['submit'] === "Logout"){
         } else {
             $_SESSION['message'] = "Senha incorreta!";
             echo $password." / ".$fetch['Name'];
-            //header("Location: ../");
+            header("Location: ../");
         }
     } else {
     $_SESSION['message'] = "Usuário não encontrado";

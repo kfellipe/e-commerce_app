@@ -6,12 +6,11 @@ include_once "$root/Model/products.php";
 include_once "$root/Controller/validateController.php";
 include_once "$root/Viewer/pages/partials/head.html";
 
-$cur = $prod->getProdByOwner(mysqli_fetch_assoc($users->getUserByName($_SESSION['logado']))['Id_Person']);
+$cur = $prod->getProdByOwner(mysqli_fetch_assoc($users->getUserByName($_COOKIE['logado']))['Id_Person']);
 $fetch = mysqli_fetch_assoc($cur);
 $num = mysqli_num_rows($cur);
-
 ?>
-<link rel="stylesheet" href="Viewer/css/productsCss/home.css">
+<link rel="stylesheet" href="Viewer/css/home.css">
 <link rel="stylesheet" href="Viewer/css/productsCss/myproducts.css">
 </head>
 <body>
@@ -28,8 +27,8 @@ include_once "$root/Viewer/pages/partials/header.php"; ?>
 <?php
     if($num > 0){
         do {
-            echo "
-                    <div class='container-products' onclick='update_product(".$fetch['Id_Product'].")'>
+            echo "<script> let produto".$fetch['Id_Product']." = 'atualizar-produto/".$fetch['Id_Product']."' </script>
+                    <div class='container-products' onclick='header(produto".$fetch['Id_Product'].")'>
                     <div class='img-produto'><img src='".$fetch['Img_Product']."'></div>
                     <table onclick='product(".$fetch['Id_Product'].")' class='container-product-infos'>
                     <tr><th>Nome: ". $fetch['Name'] ."</th></tr>
@@ -41,16 +40,11 @@ include_once "$root/Viewer/pages/partials/header.php"; ?>
     }
 ?>
         <form action="../Controller/Router.php" method="POST">
-            <button type='submit' class='container-products' name='create-product'>
+            <button onclick="header('cadastrar-produto')" type='button' class='container-products' name='create-product'>
                 <img src='../Viewer/img/add-icon.png' width='75px' height='75px'>
             </button>
         </section>
         </form>
     </main>
-    <script>
-        function update_product(id){
-            location.href = "../atualizar-produto/"+id;
-        }
-    </script>
 </body>
 </html>

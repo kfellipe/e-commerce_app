@@ -1,0 +1,5 @@
+@charset "UTF-8";
+
+@import url(../../320px/productsCss/product.css) (max-width: 450px);
+
+@import url(../../full/productsCss/product.css) (min-width: 450px);

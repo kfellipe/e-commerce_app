@@ -15,8 +15,8 @@ if(empty($_SESSION['array-query']['query'])){
             $cur = $prod->getProdBySearch($query);
             $search = mysqli_fetch_assoc($cur);
             do {
-                echo "
-            <div class='container-products' onclick='product(".$search['Id_Product'].")'>
+                echo "<script>let produto".$search['Id_Product']." = 'produto/".$search['Id_Product']."';</script>
+            <div class='container-products' onclick='header(produto".$search['Id_Product'].")'>
             <div class='img-produto'><img src='".$search['Img_Product']."'></div>
             <table class='container-product-infos'>
             <tr><th>". $search['Name'] ."</th></tr>
@@ -33,18 +33,13 @@ if(empty($_SESSION['array-query']['query'])){
             //echo "Filtro usuário";
             $cur = $users->getUserBySearch($query);
             $fetch = mysqli_fetch_assoc($cur);                            
-            $urlName = "";
-            echo "<script>
-            let $urlName = '';
-            </script>";
             do {
                 $anuncios = mysqli_num_rows($prod->getProdByOwner($fetch['Id_Person']));
-                $urlName = strtr($fetch['Name'], $caracteres_sem_acento);
                 echo "
                 <script>
-                $urlName = '$urlName';
+                let perfil".$fetch['Id_Person']." = 'perfil/".$fetch['Id_Person']."';
                 </script>
-            <div class='container-products' onclick='perfil($urlName)'>
+            <div class='container-products' onclick='header(perfil".$fetch['Id_Person'].")'>
             <div class='img-produto'><img src='https://img.icons8.com/ios-glyphs/30/000000/user--v1.png'></div>
             <table class='container-product-infos'>
             <tr><th>". $fetch['Name'] ."</th></tr>

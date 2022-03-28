@@ -101,7 +101,7 @@ ul {
 
 }
 .container-dropdown:hover {
-    height: 325px;
+    height: calc(65px * 4);
     border-bottom-left-radius: 10px;
 }
 .container-form_dropdown > input{
@@ -144,6 +144,7 @@ ul {
     font-family: 'Oswald', sans-serif;
     color: black;
     transition: background .2s, color .2s;
+    padding-left: -10px;
 }
 .logo {
     cursor: default;

@@ -1,5 +1,4 @@
 <?php
-session_start();
 $root = $_SERVER['DOCUMENT_ROOT'];
 
 include_once "$root/Controller/validateController.php";
@@ -11,15 +10,15 @@ include_once "$root/Viewer/pages/partials/head.html";
 </head>
 <body>
 <?php 
-include_once "$root/Viewer/pages/partials/headerLogado.html";
+include_once "$root/Viewer/pages/partials/header.php";
 ?>
 
 <main>
     <h1>deletar produto</h1>    
     <form action="../../Controller/Router.php" method="POST">
         <div class="btns">
-            <input type="submit" class="btn" name="sub-delete-product" value="Deletar">
-            <input type="submit" class="btn" name="update-product" value="Voltar">
+            <input type="submit" class="btn" name="submit" value="Deletar produto">
+            <button class="btn" type="button" onclick="header('meus-anuncios')" name="meu-perfil">Meus Anuncios</button>
         </div>
     </form>
 </main>
