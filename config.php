@@ -1,8 +1,8 @@
 <?php
 
 class config {
-    public $DBHOST = "localhost";
-    public $DBNAME = "db";
-    public $DBUSER = "root";
-    public $DBPASS = "";
+    CONST DBHOST = "localhost";
+    CONST DBNAME = "db";
+    CONST DBUSER = "root";
+    CONST DBPASS = "";
 }

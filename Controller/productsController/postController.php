@@ -1,8 +1,9 @@
 <?php
-$root = $_SERVER['DOCUMENT_ROOT'];
 
 include_once "$root/Model/products.php";
 include_once "$root/Model/users.php";
+
+var_dump($file);
 
 $File = $_FILES['arquivo'];
 $Name = $_POST['name'];
@@ -11,7 +12,8 @@ $Quantity = intval($_POST['quantity']);
 
 if (empty($_FILES['arquivo']['name'])){
     $_SESSION['message'] = "Nenhuma imagem enviada";
-    header("Location: ../meus-anuncios");
+    var_dump($_FILES);
+    #header("Location: ../meus-anuncios");
 } elseif (empty($_POST['name'])){
     $_SESSION['message'] = "Digite o nome do item";
     header("Location: ../meus-anuncios");

@@ -7,7 +7,7 @@ table {
     align-items: center;
 }
 .btn {
-    margin-left: 25px;
+    margin: 10px;
 }
 .container-crud_perfil {
     background: rgba(0, 0, 0, .05);
@@ -63,4 +63,43 @@ main {
 }
 .btns-action:hover {
     background: rgba(0, 0, 0, .1);
+}
+
+@media (max-width: 450px) {
+    main {
+        margin-top: 10px;
+        flex-direction: column;
+    }
+    .container-actions {
+        padding: 10px;
+        height: 15vh;
+        width: 85%;
+        flex-direction: row;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .container-actions :first-child {
+        border-radius: 0px;
+        border-right: 1px solid transparent;
+        border-image: linear-gradient(to top, rgba(0, 0, 0, 0), black, rgba(0, 0, 0, 0));
+        border-image-slice: 1;
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
+    }
+    .container-actions :last-child {
+        border-radius: 0px;
+        border-left: 1px solid transparent;
+        border-image: linear-gradient(to top, rgba(0, 0, 0, 0), black, rgba(0, 0, 0, 0));
+        border-image-slice: 1;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+    }
+    .container-crud_perfil {
+        margin-top: 20px;
+        width: 94%;
+        font-size: 15pt;
+    }
+    .btn {
+        font-size: 10pt;
+    }
 }

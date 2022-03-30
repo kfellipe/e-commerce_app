@@ -8,7 +8,6 @@ main {
     justify-content: space-around;
     align-items: center;
 }
-
 .container-perfil {
     background: rgba(0, 0, 0, .05);
     width: 60vw;
@@ -32,14 +31,14 @@ main {
     align-items: center;
 }
 .container-perfil_img {
-    width: 50%;
+    height: 350px;
+    width: 350px;
     display: flex;
     align-items: center;
     justify-content: center;
     border-right: 2px solid transparent;
     border-image: linear-gradient(0deg, rgba(0, 0, 0, 0), black, rgba(0, 0, 0, 0));
     border-image-slice: 1;
-    height: 80%;
 }
 .container-perfil_info {
     display: flex;
@@ -78,4 +77,48 @@ main {
     border-radius: 50%;
     justify-content: center;
     align-items: center;
+}
+
+@media (max-width: 450px) {
+    main {
+        flex-direction: column;
+    }
+    .container-perfil {
+        margin-top: 10px;
+        width: 95%;
+        flex-direction: column;
+        height: 65vh;
+    }
+    .container-perfil_img {
+        width: 200px;
+        height: 200px;
+        border: none;
+    }
+    .letter {
+        font-size: 65pt;
+    }
+    .container-perfil_info {
+        flex-direction: row;
+        width: 100%;
+        height: 50%;
+        border: none;
+        border-top: 1px solid transparent;
+        border-image: linear-gradient(to left, rgba(0, 0, 0, 0), black, rgba(0, 0, 0, 0));
+        border-image-slice: 1;
+    }
+    .container-actions {
+        margin-top: 10px;
+        width: 90%;
+        height: 100px;
+    }
+    .btn {
+        width: 150px;
+    }
+    .container-perfil_info_name {
+        border: none;
+        border-right: 1px solid transparent;
+        border-image: linear-gradient(to top, rgba(0, 0, 0, 0), black);
+        border-image-slice: 1;
+        font-size: 15pt;
+    }
 }

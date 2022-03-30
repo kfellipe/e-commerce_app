@@ -1,0 +1,99 @@
+@charset "UTF-8";
+
+main {
+    margin-top: 10vh;
+    margin-left: auto;
+    margin-right: auto;
+    width: 70vw;
+    height: 50vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+table {
+    width: 100%;
+}
+th {
+    padding-top: 20px;
+}
+.btn {
+    margin: 30px;
+}
+input[type='file']{
+    display: none;
+}
+.btn-upload {
+    background: rgba(0, 0, 0, .2);
+    color: white;
+    margin: 25px;
+    padding: 10px;
+    transform: scale(1);
+    transition: transform .1s, background .1s;
+}
+.btn-upload:hover {
+    background: rgba(0, 0, 0, .4);
+    transform: scale(1.1);
+}
+#preview-text {
+    font-style: italic;
+    width: 100%;
+    font-size: 15pt;
+    text-align: center;
+}
+.img-upload {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+.img-preview {
+    border: 1px solid transparent;
+    border-image: linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, .7), rgba(0, 0, 0, 0));
+    border-image-slice: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 250px;
+    height: 250px;
+    background-image: linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, .2), rgba(0, 0, 0, 0));
+    border-radius: 10px;
+}
+.img-preview > img {
+    display: none;
+    width: 95%;
+    height: auto;
+}
+
+@media (max-width: 450px) {
+    main {
+        margin-top: 10px;
+        height: 85vh;
+        flex-direction: column-reverse;
+    }
+    .img-upload {
+        justify-content: center;
+        align-items: center;
+    }
+    .btn-upload {
+        width: 125px;
+        text-align: center;
+    }
+    .btn-upload:hover {
+        width: 135px;
+    }
+    .btn {
+        margin: 5px;
+        width: 125px;
+    }
+    .img-preview {
+        width: 150px;
+        height: 150px;
+        display: flex;
+    }
+    #preview-text {
+        font-size: 13pt;
+    }
+    th {
+        padding: 5px;
+    }
+}

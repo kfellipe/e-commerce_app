@@ -8,7 +8,7 @@ if(isset($_COOKIE['logado'])){
     let meusanuncios = 'meus-anuncios';
     </script>
     <header>
-    <div class='container-logo'><h1><a href='../home'>Logo</a></h1></div>
+    <div class='container-logo'><a href='../home'><img src='../Viewer/img/github.png' alt='logo'></a></div>
     <div class='container-site' style='cursor: default;'><h1>".$_SESSION['site']."</h1></div>
     <div class='container-dropdown'>
     <div class='menu' id='perfil'><ul><li>".$_COOKIE['logado']."</li><li><span style='font-size: 10pt'>R$ ".mysqli_fetch_assoc($users->getUserByName($_COOKIE['logado']))['Credits']."</span></li></ul> 
@@ -29,12 +29,11 @@ if(isset($_COOKIE['logado'])){
     let register = 'cadastrar-usuario';
     </script>
     <header>
-    <div class='container-logo'><h1><a href='../home'>Logo</a></h1></div>
+    <div class='container-logo'><a href='../home'><img src='../Viewer/img/github.png' alt='logo'></a></div>
     <div class='container-site' style='cursor: default;'><h1>".$site."</h1></div>
     <div class='container-dropdown'>
         <div>
             <input type='submit' onclick='header(login)' value='Logar' class='menu'>
-            <input type='submit' onclick='header(register)' value='Registrar' class='menu'>
         </div>
     </div>
 </header>";

@@ -1,14 +1,23 @@
 @charset "UTF-8";
 
 .btn {
-    margin: 50px;
+    margin: 10px;
 }
 main {
-    margin-top: 20vh;
     margin-left: auto;
     margin-right: auto;
     width: 75vw;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+h3 {
+    font-style: italic;
+}
+
+@media (max-width: 450px) {
+    h1 {
+        font-size: 20pt;
+        text-align: justify;
+    }
 }

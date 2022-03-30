@@ -1,11 +1,15 @@
 <?php 
 
+$_SESSION['site'] = "Atualizar";
 include_once "$root/Viewer/pages/partials/head.html";
 include_once "$root/Controller/validateController.php";
 
 ?>
 <link rel="stylesheet" href="../Viewer/css/usersCss/update.css">
 </head>
+<?php 
+include "$root/Viewer/pages/partials/header.php";
+?>
 <body>
     <form action="../../Controller/Router.php" method="POST">
         <table>

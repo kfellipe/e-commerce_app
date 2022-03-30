@@ -39,12 +39,13 @@ include_once "$root/Viewer/pages/partials/header.php"; ?>
         } while($fetch = mysqli_fetch_assoc($cur));
     }
 ?>
-        <form action="../Controller/Router.php" method="POST">
-            <button onclick="header('cadastrar-produto')" type='button' class='container-products' name='create-product'>
-                <img src='../Viewer/img/add-icon.png' width='75px' height='75px'>
-            </button>
+            <form action="../Controller/Router.php" method="POST">
+                <button onclick="header('cadastrar-produto')" type='button' class='container-products' name='create-product'>
+                    <img src='../Viewer/img/add-icon.png' width='75px' height='75px'>
+                </button>
+            </form>
         </section>
-        </form>
+        
     </main>
 </body>
 </html>

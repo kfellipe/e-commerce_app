@@ -33,6 +33,7 @@ if($_POST['submit'] === "Logout"){
                 header("Location: ../meu-perfil");
             } else {
                 setcookie('logado', $username, 0, "/");
+                $users->updateUserLogged(mysqli_fetch_assoc($users->getUserByName($username))['Id_Person'], 1);
                 #echo $_COOKIE['logado'];
                 $_SESSION['site'] = "Meu Perfil";
                 header("Location: ../meu-perfil");

@@ -5,7 +5,7 @@ include_once "$root/Model/products.php";
 include_once "$root/Model/users.php";
 include_once "$root/Viewer/pages/partials/head.html";
 ?>
-<link rel="stylesheet" href="/Viewer/css/responsive/home.css">
+<link rel="stylesheet" href="/Viewer/css/home.css">
 </style>
 </head>
 <body>
@@ -16,10 +16,6 @@ include_once "$root/Viewer/pages/partials/head.html";
             echo "<div class='popup'>$message</div>";
             unset($_SESSION['message']);
         }
-        echo "<script>
-        let produto;
-        let perfil;
-        </script>"
     ?>
     <main>
         <ul></ul>

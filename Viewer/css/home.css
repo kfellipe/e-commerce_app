@@ -128,3 +128,21 @@ input[type=search]{
     color: rgba(0, 0, 0, .6);
     padding-left: center;
 }
+@media (max-width: 450px){
+    h3 {
+        font-size: 7pt;
+    }
+    .container-products {
+        margin: 10px;
+        width: 100px;
+        height: 150px;
+    }
+    .img-produto {
+        width: 85px;
+        height: 65px;
+    }
+    .img-profile {
+        width: 85px;
+        height: 85px;
+    }
+}

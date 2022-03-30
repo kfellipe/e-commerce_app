@@ -3,9 +3,10 @@ CREATE TABLE users (
     Name varchar(255) NOT NULL,
     Password varchar(255) NOT NULL,
     Id_Person int(255) NOT NULL AUTO_INCREMENT,
-    Colors varchar(255) NOT NULL DEFAUL '#15dfee/#008dc5',
     Credits float NOT NULL DEFAULT 0,
     Logged boolean NOT NULL,
+    Back_Colors varchar(255) NOT NULL DEFAULT "#15dfee/#008dc5",
+    Pred_Color varchar(255) NOT NULL DEFAULT "",
     PRIMARY KEY (Id_Person)
 );
 CREATE TABLE products (

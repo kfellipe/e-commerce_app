@@ -41,13 +41,13 @@ if(isset($_POST['submit'])){
         public function saleCont($cond, $cont){
             if($this->value === $cond){
                 $root = $this->root;
-                require $root."/Controller/saleController/".$cont."Controller.php";
+                include_once $root."/Controller/saleController/".$cont."Controller.php";
             }
         }
         public function prodCont($cond, $cont){
             if($this->value === $cond){
                 $root = $this->root;
-                require $root."/Controller/productsController/".$cont."Controller.php";
+                include_once $root."/Controller/productsController/".$cont."Controller.php";
             }
         } 
         public function friendCont($cond, $cont){
@@ -56,7 +56,7 @@ if(isset($_POST['submit'])){
                 include_once "$root/Model/friends.php";
                 $idReceiver = mysqli_fetch_assoc($users->getUserByName($_COOKIE['logado']))['Id_Person'];
                 $idSender = $_POST['id-user'];
-                require $root."/Controller/friendsController/".$cont."Controller.php";
+                include_once $root."/Controller/friendsController/".$cont."Controller.php";
             }
         }
         public function userCont($cond, $cont){
@@ -77,7 +77,7 @@ if(isset($_POST['submit'])){
     $sub->userCont("Aplicar", "custom");
     $sub->userCont("Atualizar dados", "update");
     $sub->userCont("Deletar usuario", "delete");
-    
+
     $sub->friendCont("Aceitar", "accept");
     $sub->friendCont("Recusar", "reject");
     $sub->friendCont("Enviar solicitação", "post");
@@ -87,18 +87,22 @@ if(isset($_POST['submit'])){
     $sub->prodCont("Atualizar produto", "update");
     $sub->prodCont("Deletar produto", "delete");
     $sub->prodCont("Cadastrar produto", "post");
+
+    $sub->saleCont("Comprar", "buy");
+    $sub->saleCont("Confirmar compra", "buy");
+
 }
 $url = new url();
 
-$url->user("customizar-perfil", "custom.php");#####
-$url->user("deletar-usuario", "delete.php");#####
-$url->user("transacoes", "historic.php");#####
+$url->user("customizar-perfil", "custom.php");
+$url->user("deletar-usuario", "delete.php");
+$url->user("transacoes", "historic.php");
 $url->user("login", "login.php");
-$url->user("meus-amigos", "myfriends.php");######
+$url->user("meus-amigos", "myfriends.php");
 $url->user("meu-perfil", "myprofile.php");
 $url->user("perfil", "profile.php");
 $url->user("cadastrar-usuario", "registrar.php");
-$url->user("atualizar-usuario", "update.php");######
+$url->user("atualizar-usuario", "update.php");
 
 $url->prod("comprar-produto", "buy.php");
 $url->prod("cadastrar-produto", "create.php");

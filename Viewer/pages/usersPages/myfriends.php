@@ -33,17 +33,21 @@ if(isset($_SESSION['message'])){
                         do {
                             if($fetch['Id_Receiver'] == $idLogado){
                                 if($fetch['Friend'] == true){
+                                    $letter = str_split(mysqli_fetch_assoc($users->getUserById($fetch['Id_Sender']))['Name']);
+                                    $letter = strtoupper($letter[0]);
                                     echo "<table class='container-friend_profile'>
-                                    <tr><th><div class='friend-img'><img width='auto' height='100%' src='../Viewer/img/user.png' alt='#' title='".mysqli_fetch_assoc($users->getUserById($fetch['Id_Sender']))['Name']."' onclick='profile(".$fetch['Id_Sender'].")'></div></th></tr>
-                                    <tr><th>".mysqli_fetch_assoc($users->getUserById($fetch['Id_Sender']))['Name']."</tr></th>
+                                    <tr><th><div class='friend-img' style='background-image: radial-gradient(".mysqli_fetch_assoc($users->getUserById($fetch['Id_Sender']))['Pred_Color']." 30%, rgba(0, 0, 0, 0)70%' title='".mysqli_fetch_assoc($users->getUserById($fetch['Id_Sender']))['Name']."'><a class='letter' href='perfil/".$fetch['Id_Sender']."'>".$letter."</a></div></th></tr>
+                                    <tr><th><a href='perfil/".$fetch['Id_Sender']."'><span>".mysqli_fetch_assoc($users->getUserById($fetch['Id_Sender']))['Name']."</span></a></tr></th>
                                     </table>";
                                     $amigos = true;
                                 }
                             } else {
                                 if($fetch['Friend'] == true){
+                                    $letter = str_split(mysqli_fetch_assoc($users->getUserById($fetch['Id_Receiver']))['Name']);
+                                    $letter = strtoupper($letter[0]);
                                     echo "<table class='container-friend_profile'>
-                                    <tr><th><div class='friend-img'><img width='auto' height='100%' src='../Viewer/img/user.png' alt='#' title='".mysqli_fetch_assoc($users->getUserById($fetch['Id_Receiver']))['Name']."' onclick='profile(".$fetch['Id_Receiver'].")'></div></th></tr>
-                                    <tr><th>".mysqli_fetch_assoc($users->getUserById($fetch['Id_Receiver']))['Name']."</tr></th>
+                                    <tr><th><div class='friend-img'><div class='friend-img' style='background-image: radial-gradient(".mysqli_fetch_assoc($users->getUserById($fetch['Id_Receiver']))['Pred_Color']." 30%, rgba(0, 0, 0, 0)70%' title='".mysqli_fetch_assoc($users->getUserById($fetch['Id_Receiver']))['Name']."'><a class='letter' href='perfil/".$fetch['Id_Receiver']."'>".$letter."</a></div></th></tr>
+                                    <tr><th><a href='perfil/".$fetch['Id_Receiver']."'><span>".mysqli_fetch_assoc($users->getUserById($fetch['Id_Receiver']))['Name']."</span></a></tr></th>
                                     </table>";
                                     $amigos = true;
                                 }
@@ -65,63 +69,63 @@ if(isset($_SESSION['message'])){
             </div>
             <div class="content">
                 <div class="content-send">
-                    <div class="content-title">
+                    <div class="title">
                         <h3><ins>Enviados</ins></h3>
                     </div>
-                    <div class="content-send">
-                    <?php 
-                    $cur = $friends->getFriendsBySendRequest($idLogado);
-                    $fetch = mysqli_fetch_assoc($cur);
-                    $num = mysqli_num_rows($cur);
-                    if($num > 0){
-                        do {
-                            echo "<form action='../Controller/Router.php' method='POST'>
-                            <table class='container-friend_profile'>
-                            <tr><th>
-                                <div class='friend-img' style='width: 75px; height: 50px;' title='".mysqli_fetch_assoc($users->getUserById($fetch['Id_Receiver']))['Name']."'>
-                                    <img src='../Viewer/img/user.png' width='auto' height='100%' alt='#' onclick='profile(".$fetch['Id_Receiver'].")'>
+                    <div class="content">
+                        <?php 
+                        $cur = $friends->getFriendsBySendRequest($idLogado);
+                        $fetch = mysqli_fetch_assoc($cur);
+                        $num = mysqli_num_rows($cur);
+                        if($num > 0){
+                            do {
+                                $letter = str_split(mysqli_fetch_assoc($users->getUserById($fetch['Id_Receiver']))['Name']);
+                                $letter = strtoupper($letter[0]);
+                                echo "<script> let perfil".$fetch['Id_Receiver']." = 'perfil/".$fetch['Id_Receiver']."'; </script>
+                                <form action='../Controller/Router.php' method='POST'>
+                                <div class='container-friend_profile'>
+                                    <div class='friend-img' style='background-image: radial-gradient(".mysqli_fetch_assoc($users->getUserById($fetch['Id_Receiver']))['Pred_Color']." 30%, rgba(0, 0, 0, 0)70%' title='".mysqli_fetch_assoc($users->getUserById($fetch['Id_Receiver']))['Name']."'>
+                                    <a class='letter' href='perfil/".$fetch['Id_Receiver']."'>".$letter."</a>
+                                    </div>
+                                    <a href='perfil/".$fetch['Id_Receiver']."'><span>".mysqli_fetch_assoc($users->getUserById($fetch['Id_Receiver']))['Name']."</span></a>
+                                    <div class='buttons'>
+                                        <input type='submit' name='submit' class='btns-action' value='Cancelar'>
+                                    </div>
+                                    <input type='hidden' name='id-user' value='".$fetch['Id_Receiver']."'>
                                 </div>
-                            </th></tr>
-                            <tr><th>".mysqli_fetch_assoc($users->getUserById($fetch['Id_Receiver']))['Name']."</th></tr>
-                            <tr><th>
-                                <input type='submit' name='submit' class='btns-action' value='Cancelar'>
-                            </th></tr>
-                            <input type='hidden' name='id-user' value='".$fetch['Id_Receiver']."'>
-                        </table>
-                        </form>";
-                        } while($fetch = mysqli_fetch_assoc($cur));
-                    }
-            
-                    ?>
+                                </form>";
+                            } while($fetch = mysqli_fetch_assoc($cur));
+                        }
+                
+                        ?>
                     </div>
                 </div>
                 <div class="content-receive">
-                    <div class="content-title">
+                    <div class="title">
                         <h3><ins>Recebidos</ins></h3>
                     </div>
-                    <div class="content-receive">
+                    <div class="content">
                         <?php 
-                        
                         $cur = $friends->getFriendsByReceiveRequest($idLogado);
                         $fetch = mysqli_fetch_assoc($cur);
                         $num = mysqli_num_rows($cur);
                         if($num > 0){
                             do {
-                                echo "<form action='../Controller/Router.php' method='POST'>
-                                <table class='container-friend_profile'>
-                                <tr><th>
-                                    <div class='friend-img' style='width: 75px; height: 50px;' title='".mysqli_fetch_assoc($users->getUserById($fetch['Id_Sender']))['Name']."'> 
-                                        <img src='../Viewer/img/user.png' width='auto' height='100%' alt='#' onclick='profile(".$fetch['Id_Sender'].")' onclick='".$fetch['Id_Receiver']."'>
+                                $letter = str_split(mysqli_fetch_assoc($users->getUserById($fetch['Id_Sender']))['Name']);
+                                $letter = strtoupper($letter[0]);
+                                echo "<script>let perfil".$fetch['Id_Sender']." = 'perfil/".$fetch['Id_Sender']."';</script>
+                                <form action='../Controller/Router.php' method='POST'>
+                                <div class='container-friend_profile'>
+                                <div class='friend-img' style='background-image: radial-gradient(".mysqli_fetch_assoc($users->getUserById($fetch['Id_Receiver']))['Pred_Color']." 30%, rgba(0, 0, 0, 0)70%' title='".mysqli_fetch_assoc($users->getUserById($fetch['Id_Receiver']))['Name']."'>
+                                <a class='letter' href='perfil/".$fetch['Id_Receiver']."'>".$letter."</a>
+                                    </div><a href='perfil/".$fetch['Id_Sender']."'>
+                                    <span>".mysqli_fetch_assoc($users->getUserById($fetch['Id_Sender']))['Name']."</span></a>
+                                    <div class='buttons'>
+                                        <input type='submit' name='submit' class='btns-action' value='Aceitar'>
+                                        <input type='submit' name='submit' class='btns-action' value='Rejeitar'>
                                     </div>
-                                </th></tr>
-                                <tr><th>
-                                    <input type='submit' value='Aceitar' name='submit' class='btns-action'>
-                                </th></tr>
-                                <tr><th>
-                                    <input type='submit' value='Recusar' class='btns-action' name='submit'>
-                                </th></tr>
-                                <input type='hidden' id='id-user' name='id-user' value='".$fetch['Id_Sender']."'>
-                            </table>
+                                    <input type='hidden' name='id-user' value='".$fetch['Id_Sender']."'>
+                                </div>
                             </form>";
                             } while($fetch = mysqli_fetch_assoc($cur));
                         }?>

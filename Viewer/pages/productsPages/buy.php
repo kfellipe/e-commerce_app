@@ -1,8 +1,9 @@
 <?php 
 
 include_once "$root/Model/sales.php";
+
 $fetch = mysqli_fetch_assoc($prod->getProdById($url[1]));
-if($fetch['Id_Owner'] == mysqli_fetch_assoc($users->getUserByName($_SESSION['logado']))['Id_Person'] || !isset($_SESSION['logado'])){
+if($fetch['Id_Owner'] == mysqli_fetch_assoc($users->getUserByName($_COOKIE['logado']))['Id_Person'] || !isset($_COOKIE['logado'])){
     header("Location: ../../");
 }
 if($quantity = 0) {
@@ -15,6 +16,7 @@ include_once "$root/Viewer/pages/partials/head.html";
 <body>
     <?php 
     include_once "$root/Viewer/pages/partials/header.php";
+    $fetch = mysqli_fetch_assoc($prod->getProdById($url[1]));
     ?>
     <main>
         <section class="container-product_info">
@@ -39,7 +41,7 @@ include_once "$root/Viewer/pages/partials/head.html";
             <div class="content">
                 <table>
                     <tr>
-                        <th>Preço Unidade</th>
+                        <th>Preço Unitário</th>
                         <th>Quantidade</th>
                         <th>Total a pagar</th>
                         <th>Creditos na conta</th>
@@ -54,10 +56,10 @@ include_once "$root/Viewer/pages/partials/head.html";
                         <td><?= $quantity ?></td>
                         <td><?= $priceTot ?></td>
                         <?php 
-                        if(mysqli_fetch_assoc($users->getUserByName($_SESSION['logado']))['Credits'] - $priceTot < 0){
-                            echo "<td><span style='color: red;'>".mysqli_fetch_assoc($users->getUserByName($_SESSION['logado']))['Credits']."</span>(".mysqli_fetch_assoc($users->getUserByName($_SESSION['logado']))['Credits']." - ".$priceTot." = ".mysqli_fetch_assoc($users->getUserByName($_SESSION['logado']))['Credits'] - $priceTot.")</td>";
+                        if(mysqli_fetch_assoc($users->getUserByName($_COOKIE['logado']))['Credits'] - $priceTot < 0){
+                            echo "<td><span style='color: red;'>".mysqli_fetch_assoc($users->getUserByName($_COOKIE['logado']))['Credits']."</span>(".mysqli_fetch_assoc($users->getUserByName($_COOKIE['logado']))['Credits']." - ".$priceTot." = ".mysqli_fetch_assoc($users->getUserByName($_COOKIE['logado']))['Credits'] - $priceTot.")</td>";
                         } else {
-                            echo "<td><span style='color: green;'>".mysqli_fetch_assoc($users->getUserByName($_SESSION['logado']))['Credits']."</span>(".mysqli_fetch_assoc($users->getUserByName($_SESSION['logado']))['Credits']." - ".$priceTot." = ".mysqli_fetch_assoc($users->getUserByName($_SESSION['logado']))['Credits'] - $priceTot.")</td>";
+                            echo "<td><span style='color: green;'>".mysqli_fetch_assoc($users->getUserByName($_COOKIE['logado']))['Credits']."</span>(".mysqli_fetch_assoc($users->getUserByName($_COOKIE['logado']))['Credits']." - ".$priceTot." = ".mysqli_fetch_assoc($users->getUserByName($_COOKIE['logado']))['Credits'] - $priceTot.")</td>";
                         }
                         ?>
                     </tr>
@@ -68,8 +70,8 @@ include_once "$root/Viewer/pages/partials/head.html";
         <section class="btns-action">
             <form action="../../Controller/Router.php" method="POST">
                 <input type="hidden" name="id-product" value="<?= $fetch['Id_Product'] ?>">
-                <input type="submit" value="Confirmar" name="sub-buy" class="btn">
-                <input type="submit" value="Cancelar" name="product" class="btn">
+                <input type="submit" value="Confirmar compra" name="submit" class="btn">
+                <button type="button" class="btn" onclick="header('home')">Cancelar</button>
             </form>
         </section>
     </main>

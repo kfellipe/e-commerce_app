@@ -11,7 +11,7 @@ if(isset($_COOKIE['logado'])){
 }
 include_once "$root/Viewer/pages/partials/head.html";
 ?>
-<link rel="stylesheet" href="../Viewer/css/responsive/usersCss/profile.css">
+<link rel="stylesheet" href="../Viewer/css/usersCss/profile.css">
 </head>
 <body>
     <?php 
@@ -58,8 +58,10 @@ include_once "$root/Viewer/pages/partials/head.html";
                     } else {
                         echo "<input type='hidden' id='id-requested' name='id-user' value='".$url[1]."'>
                         <input type='submit' class='btn' name='submit' value='Enviar solicitação'>";
+                    }
+                } else {
+                    echo "<script>let logar = 'logar';</script><button type='button' onclick='header(logar)' class='btn'>Logar</button>";
                 }
-            }
                 ?>
                 
             </form>

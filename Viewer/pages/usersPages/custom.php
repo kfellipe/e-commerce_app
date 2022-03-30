@@ -36,7 +36,7 @@ include_once "$root/Viewer/pages/partials/header.php";
             </section>
             <div class="container-custom" id="container-custom" onmouseover="applycolors()" onmouseout="defaultcolor()">
                 <div class="container-header">
-                    <span>Passe o mouse para Preview</span>
+                    <span>Passe o mouse ou clique para Previsualizar</span>
                 </div>
                 <div class="container-main">
                     <div id="letter" class="letter" style="background-image: radial-gradient(<?= $fetch['Pred_Color'] ?> 35%, rgba(0, 0, 0, 0)70%);"><?= $letter ?></div>

@@ -23,17 +23,12 @@ include_once "$root/Viewer/pages/partials/head.html";
                 </th>
             </tr>
             <tr>
-                <th colspan="2">
-                    <div class="btns">
-                        <input type="submit" value="Registrar" name="submit" class="btn">
-                        <input type="submit" value="Logar" name="submit" class="btn">
-                    </div>
-                </th>
-            </tr>
-            <tr>
                 <th>
-                    <input type="submit" value="Voltar" name="home" class="btn">
-                </th>      
+                    <input type="submit" value="Registrar" name="submit" class="btn">
+                </th>
+                <th>
+                    <button type="button" class="btn" name="logar" onclick="header('login')">Logar</button>
+                </th>
             </tr>
         </form>
     </table>

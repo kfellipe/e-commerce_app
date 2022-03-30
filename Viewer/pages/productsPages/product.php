@@ -12,7 +12,7 @@ include_once "$root/Viewer/pages/partials/head.html";
 
 
 ?>
-<link rel="stylesheet" href="../Viewer/css/responsive/productsCss/product.css">
+<link rel="stylesheet" href="../Viewer/css/productsCss/product.css">
 </head>
 <body>
 <?php 
@@ -26,6 +26,7 @@ if(isset($_SESSION['message'])){
 ?>
 
 <main>
+<form action="../../Controller/Router.php" method="POST">
     <section class="container-item">
         <section class="container-img">
             <img class="img-product" src="<?= $fetch['Img_Product']; ?>" alt="">
@@ -45,28 +46,27 @@ if(isset($_SESSION['message'])){
                     <h3><a href="../perfil/<?= $fetch['Id_Owner'] ?>"><?= mysqli_fetch_assoc($users->getUserById($fetch['Id_Owner']))['Name'] ?></a></h3>
                 </div>
             </section>
-            <form action="../../Controller/Router.php" method="POST">
-                <div class="container-buy">
-                    <?php 
-                    if(isset($_COOKIE['logado'])){
-                        $idLogado = mysqli_fetch_assoc($users->getUserByName($_COOKIE['logado']))['Id_Person'];
-                        if($fetch['Id_Owner'] == $idLogado){
-                            echo "<input type='submit' value='Editar' name='update-product' class='btn'>
-                            <input type='hidden' name='id-produto' value='".$fetch['Id_Product']."'";
-                        } else {
-                            echo "<p>Quantidade:  
-                            <input type='number' value='1' max='".$fetch['Quantity']."' min='1' name='quantity' id='quantity'></p>
-                            <input type='submit' value='Comprar' class='btn' name='buy'>
-                            <input type='hidden' name='id-product' value='".$fetch['Id_Product']."'>";
-                        }
+            <div class="container-buy">
+                <?php 
+                if(isset($_COOKIE['logado'])){
+                    $idLogado = mysqli_fetch_assoc($users->getUserByName($_COOKIE['logado']))['Id_Person'];
+                    if($fetch['Id_Owner'] == $idLogado){
+                        echo "<input type='submit' value='Editar' name='update-product' class='btn'>
+                        <input type='hidden' name='id-produto' value='".$fetch['Id_Product']."'";
                     } else {
-                        echo "<input type='submit' value='Logar' name='login' class='btn'>";
+                        echo "<script>let comprar = 'comprar-produto/".$fetch['Id_Product']."';</script><p>Quantidade:  
+                        <input type='number' value='1' max='".$fetch['Quantity']."' min='1' name='quantity' id='quantity'></p>
+                        <input type='submit' name='submit' class='btn' value='Comprar'>
+                        <input type='hidden' name='id-prod' value='".$fetch['Id_Product']."'>";
                     }
-                        ?>
-                </div>
-            </form>
+                } else {
+                    echo "<script>let logar = 'logar';</script><button type='button' class='btn' onclick='header(logar)'>Logar</button>";
+                }
+                    ?>
+            </div>
         </section>
     </section>
+    </form>
 </main>
 </body>
 </html>

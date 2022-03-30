@@ -10,13 +10,12 @@
         transform: translateX(0px);
     }
 }
-
 table {
     display: flex;
     justify-content: center;
     width: 400px;
     animation-name: start;
-    animation-duration: 1.5s;
+    animation-duration: .9s;
     margin-top: 25vh;
     display: flex;
     margin-left: auto;
@@ -36,20 +35,16 @@ input {
 ::-webkit-input-placeholder {
     color: rgba(255, 255, 255, 0.7);
 }
-#btn {
-    font-weight: bolder;
-    color: white;
-    margin-right: 10px;
-    margin-left: 10px;
-    transition: transform .5s, background .5s;
-}
-#btn:hover {
-    transform: scale(1.1);
-    background: rgba(0, 0, 0, .3)
-}
-.btns {
-    border: none;
-    width: 400px;
-    display: flex;
-    justify-content: space-between;
+@media (max-width: 450px){
+    table {
+        width: 90%;
+        margin-top: 15vh;
+    }
+    th {
+        display: flex;
+        justify-content: center;
+    }
+    .btn {
+        margin-top: 10px;
+    }
 }
