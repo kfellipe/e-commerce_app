@@ -49,6 +49,8 @@ $fetch = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM lang WHERE Lang =
             echo "<button>$button</button>";
         }
         ?>
+        <br>
+        
 </header>
 <main>
 <?php 
@@ -62,7 +64,9 @@ foreach($content as $button){
     
     ?>
 </main>
-    
+<?php 
+        echo getenv("REMOTE_ADDR");
+        ?>
 
 </body>
 </html>

@@ -20,6 +20,9 @@ class users extends conn {
     public function getUserProdOwner($id){
         return mysqli_query($this->conn, "SELECT U.Name FROM users AS U JOIN products as P ON U.Id_Person = $id");
     }
+    public function updateUserSaveLogin($save){
+        return mysqli_query($this->conn, "UPDATE users SET Save_Login = $save WHERE Name = '".$_COOKIE['logado']."'");
+    }
     public function updateUser($userCurr, $userNew, $passNew){
         return mysqli_query($this->conn, "UPDATE `users` SET `Name` = '$userNew', `Password` = '$passNew' WHERE `Name` = '$userCurr'");
     }

@@ -26,17 +26,31 @@ if($_POST['submit'] === "Logout"){
             header("Location: ../../home");
         } elseif($password == $fetch['Password']){
             if(isset($_POST['remember'])){
-                setcookie('logado', $username, time() + (60 * 60 * 24 * 60), "/");
-                $users->updateUserLogged(mysqli_fetch_assoc($users->getUserByName($username))['Id_Person'], 1);
-                #echo $_COOKIE['logado'];
-                $_SESSION['site'] = "Meu Perfil";
-                header("Location: ../meu-perfil");
+                if(mysqli_fetch_assoc($users->getUserByName($_COOKIE['logado']))['Save_Login'] > 0){
+                    setcookie('logado', $username, time() + (60 * 60 * 24 * 60), "/");
+                    $users->updateUserLogged(mysqli_fetch_assoc($users->getUserByName($username))['Id_Person'], 1);
+                    #echo $_COOKIE['logado'];
+                    $_SESSION['site'] = "Meu Perfil";
+                    header("Location: ../meu-perfil");
+                } else {
+                    setcookie('logado', $username, time() + (60 * 60 * 24 * 60), "/");
+                    $_SESSION['site'] = "Meu perfil";
+                    header("Location: ../meu-perfil");
+                }
             } else {
-                setcookie('logado', $username, 0, "/");
-                $users->updateUserLogged(mysqli_fetch_assoc($users->getUserByName($username))['Id_Person'], 1);
-                #echo $_COOKIE['logado'];
-                $_SESSION['site'] = "Meu Perfil";
-                header("Location: ../meu-perfil");
+                if(mysqli_fetch_assoc($users->getUserByName($_COOKIE['logado']))['Save_Login'] > 0){
+                    setcookie('logado', $username, 0, "/");
+                    $users->updateUserLogged(mysqli_fetch_assoc($users->getUserByName($username))['Id_Person'], 1);
+                    #echo $_COOKIE['logado'];
+                    $_SESSION['site'] = "Meu Perfil";
+                    header("Location: ../meu-perfil");
+                } else {
+                    setcookie('logado', $username, 0, "/");
+                    $users->updateUserLogged(mysqli_fetch_assoc($users->getUserByName($username))['Id_Person'], 1);
+                    #echo $_COOKIE['logado'];
+                    $_SESSION['site'] = "Meu Perfil";
+                    header("Location: ../meu-perfil"); 
+                }
             }
         } else {
             $_SESSION['message'] = "Senha incorreta!";

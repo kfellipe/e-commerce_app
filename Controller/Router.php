@@ -77,6 +77,7 @@ if(isset($_POST['submit'])){
     $sub->userCont("Aplicar", "custom");
     $sub->userCont("Atualizar dados", "update");
     $sub->userCont("Deletar usuario", "delete");
+    $sub->userCont("Salvar configurações", "config");
 
     $sub->friendCont("Aceitar", "accept");
     $sub->friendCont("Recusar", "reject");
@@ -103,6 +104,7 @@ $url->user("meu-perfil", "myprofile.php");
 $url->user("perfil", "profile.php");
 $url->user("cadastrar-usuario", "registrar.php");
 $url->user("atualizar-usuario", "update.php");
+$url->user("configuracoes", "settings.php");
 
 $url->prod("comprar-produto", "buy.php");
 $url->prod("cadastrar-produto", "create.php");
